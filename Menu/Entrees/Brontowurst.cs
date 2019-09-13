@@ -1,4 +1,7 @@
-﻿using System;
+﻿/* Brontowurst.cs
+ * Author: Ben Hartman
+ */
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -17,9 +20,9 @@ namespace DinoDiner.Menu.Entrees
             {
                 get
                 {
-                    List<string> ingredients = new List<string>() { "brautwurst" };
-                    if (bun) ingredients.Add("whole-wheat bun");
-                    if (onions) ingredients.Add("Onions");
+                    List<string> ingredients = new List<string>() { "Brautwurst" };
+                    if (bun) ingredients.Add("Whole Wheat Bun");
+                    if (onions) ingredients.Add("Onion");
                     if (peppers) ingredients.Add("Peppers");
                     return ingredients;
                 }

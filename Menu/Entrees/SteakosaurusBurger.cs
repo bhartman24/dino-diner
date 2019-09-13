@@ -1,4 +1,7 @@
-﻿using System;
+﻿/* SteakosaurusBurger.cs
+ * Author: Ben Hartman
+ */
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -18,8 +21,8 @@ namespace DinoDiner.Menu.Entrees
         {
             get
             {
-                List<string> ingredients = new List<string>() { "SteakBurger Pattie" };
-                if (bun) ingredients.Add("whole-wheat bun");
+                List<string> ingredients = new List<string>() { "Steakburger Pattie" };
+                if (bun) ingredients.Add("Whole Wheat Bun");
                 if (pickle) ingredients.Add("Pickle");
                 if (ketchup) ingredients.Add("Ketchup");
                 if (mustard) ingredients.Add("Mustard");

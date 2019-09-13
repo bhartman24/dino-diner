@@ -1,4 +1,7 @@
-﻿using System;
+﻿/* PterodactylWings.cs
+ * Author: Ben Hartman
+ */
+using System;
 using System.Collections.Generic;
 using System.Text;
 
