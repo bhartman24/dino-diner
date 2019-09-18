@@ -47,7 +47,7 @@ namespace MenuTest.Entrees
             {
                 if (ingredient.Equals("Chicken Nugget")) nuggetCount++;
             }
-            Assert.Equal(7, nuggetCount);
+            Assert.Equal<int>(7, nuggetCount);
             Assert.Equal<int>(7, dn.Ingredients.Count);
 
             dn.AddNugget();
@@ -57,7 +57,7 @@ namespace MenuTest.Entrees
             {
                 if (ingredient.Equals("Chicken Nugget")) nuggetCount++;
             }
-            Assert.Equal(8, nuggetCount);
+            Assert.Equal<int>(8, nuggetCount);
             Assert.Equal<int>(8, dn.Ingredients.Count);
 
         }
@@ -67,6 +67,7 @@ namespace MenuTest.Entrees
         {
             DinoNuggets dn = new DinoNuggets();
             dn.AddNugget();
+<<<<<<< HEAD
             Assert.Equal(4.50, dn.Price);
             //Assert.Equal(dn.Price, 4.50);
             dn.AddNugget();
@@ -75,6 +76,13 @@ namespace MenuTest.Entrees
             dn.AddNugget();
             //Assert.Equal(dn.Price, 5.0);
             Assert.Equal(5.0, dn.Price);
+=======
+            Assert.Equal(dn.Price, 4.50, 2);
+            dn.AddNugget();
+            Assert.Equal(dn.Price, 4.75, 2);
+            dn.AddNugget();
+            Assert.Equal(dn.Price, 5.0, 2);
+>>>>>>> 7c1bb13d2713a6cbc09b2c052952c29a651e7984
         }
 
         [Fact]
@@ -82,6 +90,7 @@ namespace MenuTest.Entrees
         {
             DinoNuggets dn = new DinoNuggets();
             dn.AddNugget();
+<<<<<<< HEAD
             Assert.Equal<uint>(59 * 7, dn.Calories);
             //Assert.Equal(dn.Calories, 59*7);
             dn.AddNugget();
@@ -90,6 +99,13 @@ namespace MenuTest.Entrees
             dn.AddNugget();
             Assert.Equal<uint>(59 * 9, dn.Calories);
             //Assert.Equal(dn.Calories, 59*9);
+=======
+            Assert.Equal<uint>(dn.Calories, 59*7);
+            dn.AddNugget();
+            Assert.Equal<uint>(dn.Calories, 59*8);
+            dn.AddNugget();
+            Assert.Equal<uint>(dn.Calories, 59*9);
+>>>>>>> 7c1bb13d2713a6cbc09b2c052952c29a651e7984
         }
     }
 }

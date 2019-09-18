@@ -7,12 +7,24 @@ using System.Text;
 
 namespace DinoDiner.Menu.Entrees
 {
+    /// <summary>
+    /// Class to represent the PterodactylWings entree.
+    /// </summary>
     public class PterodactylWings
     {
-
+        /// <summary>
+        /// Property for price
+        /// </summary>
         public double Price { get; set; }
+
+        /// <summary>
+        /// Property for calories
+        /// </summary>
         public uint Calories { get; set; }
 
+        /// <summary>
+        /// Property for ingredients
+        /// </summary>
         public List<string> Ingredients
         {
             get
@@ -22,6 +34,9 @@ namespace DinoDiner.Menu.Entrees
             }
         }
 
+        /// <summary>
+        /// Class constructor to set the price and calories.
+        /// </summary>
         public PterodactylWings()
         {
             this.Price = 7.21;
