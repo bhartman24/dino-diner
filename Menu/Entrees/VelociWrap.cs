@@ -10,7 +10,7 @@ namespace DinoDiner.Menu.Entrees
     /// <summary>
     /// Class to represent the VelociWrap entree.
     /// </summary>
-    public class VelociWrap
+    public class VelociWrap : Entree
     {
         /// <summary>
         /// backing variables for the properties.
@@ -19,30 +19,6 @@ namespace DinoDiner.Menu.Entrees
         private bool dressing = true;
         private bool cheese = true;
 
-        /// <summary>
-        /// Property for price
-        /// </summary>
-        public double Price { get; set; }
-
-        /// <summary>
-        /// Property for calories
-        /// </summary>
-        public uint Calories { get; set; }
-
-        /// <summary>
-        /// Property for ingredients
-        /// </summary>
-        public List<string> Ingredients
-        {
-            get
-            {
-                List<string> ingredients = new List<string>() { "Flour Tortilla", "Chicken Breast" };
-                if (lettuce) ingredients.Add("Romaine Lettuce");
-                if (dressing) ingredients.Add("Ceasar Dressing");
-                if (cheese) ingredients.Add("Parmesan Cheese");
-                return ingredients;
-            }
-        }
 
         /// <summary>
         /// Class constructor to set the price and calories.
@@ -51,6 +27,7 @@ namespace DinoDiner.Menu.Entrees
         {
             this.Price = 6.86;
             this.Calories = 356;
+            this.Ingredients = new List<string>() { "Flour Tortilla", "Chicken Breast", "Romaine Lettuce", "Ceasar Dressing", "Parmesan Cheese" };
         }
 
         /// <summary>
@@ -59,6 +36,7 @@ namespace DinoDiner.Menu.Entrees
         public void HoldLettuce()
         {
             this.lettuce = false;
+            Ingredients.Remove("Lettuce");
         }
 
         /// <summary>
@@ -67,14 +45,16 @@ namespace DinoDiner.Menu.Entrees
         public void HoldDressing()
         {
             this.dressing = false;
+            Ingredients.Remove("Dressing");
         }
 
         /// <summary>
         /// Method to implement no cheese asked on meal
         /// </summary>
-        public void holdCheese()
+        public void HoldCheese()
         {
             this.cheese = false;
+            Ingredients.Remove("Parmesan Cheese");
         }
     }
 }

@@ -10,7 +10,7 @@ namespace DinoDiner.Menu.Entrees
     /// <summary>
     /// Class to represent the TRexKingBurger entree.
     /// </summary>
-    public class TRexKingBurger
+    public class TRexKingBurger : Entree
     {
         /// <summary>
         /// backing variables for the properties.
@@ -24,35 +24,6 @@ namespace DinoDiner.Menu.Entrees
         private bool mustard = true;
         private bool mayo = true;
 
-        /// <summary>
-        /// Property for price
-        /// </summary>
-        public double Price { get; set; }
-
-        /// <summary>
-        /// Property for calories
-        /// </summary>
-        public uint Calories { get; set; }
-
-        /// <summary>
-        /// Property for ingredients
-        /// </summary>
-        public List<string> Ingredients
-        {
-            get
-            {
-                List<string> ingredients = new List<string>() { "Steakburger Pattie" , "Steakburger Pattie", "Steakburger Pattie"};
-                if (bun) ingredients.Add("Whole Wheat Bun");
-                if (lettuce) ingredients.Add("Lettuce");
-                if (tomato) ingredients.Add("Tomato");
-                if (onion) ingredients.Add("Onion");
-                if (pickle) ingredients.Add("Pickle");
-                if (ketchup) ingredients.Add("Ketchup");
-                if (mustard) ingredients.Add("Mustard");
-                if (mayo) ingredients.Add("Mayo");
-                return ingredients;
-            }
-        }
 
         /// <summary>
         /// Class constructor to set the price and calories.
@@ -61,6 +32,7 @@ namespace DinoDiner.Menu.Entrees
         {
             this.Price = 8.45;
             this.Calories = 728;
+            this.Ingredients = new List<string>() { "Steakburger Pattie", "Steakburger Pattie", "Steakburger Pattie", "Whole Wheat Bun", "Lettuce", "Tomato", "Onion", "Pickle", "Ketchup", "Mustard", "Mayo" };
         }
 
         /// <summary>
@@ -69,6 +41,7 @@ namespace DinoDiner.Menu.Entrees
         public void HoldBun()
         {
             this.bun = false;
+            Ingredients.Remove("Whole Wheat Bun");
         }
 
         /// <summary>
@@ -77,6 +50,7 @@ namespace DinoDiner.Menu.Entrees
         public void HoldLettuce()
         {
             this.lettuce = false;
+            Ingredients.Remove("Lettuce");
         }
 
         /// <summary>
@@ -85,6 +59,7 @@ namespace DinoDiner.Menu.Entrees
         public void HoldTomato()
         {
             this.tomato = false;
+            Ingredients.Remove("Tomato");
         }
 
         /// <summary>
@@ -93,6 +68,7 @@ namespace DinoDiner.Menu.Entrees
         public void HoldOnion()
         {
             this.onion = false;
+            Ingredients.Remove("Onion");
         }
 
         /// <summary>
@@ -101,6 +77,7 @@ namespace DinoDiner.Menu.Entrees
         public void HoldPickle()
         {
             this.pickle = false;
+            Ingredients.Remove("Pickle");
         }
 
         /// <summary>
@@ -109,6 +86,7 @@ namespace DinoDiner.Menu.Entrees
         public void HoldKetchup()
         {
             this.ketchup = false;
+            Ingredients.Remove("Ketchup");
         }
 
         /// <summary>
@@ -117,6 +95,7 @@ namespace DinoDiner.Menu.Entrees
         public void HoldMustard()
         {
             this.mustard = false;
+            Ingredients.Remove("Mustard");
         }
 
         /// <summary>
@@ -125,6 +104,7 @@ namespace DinoDiner.Menu.Entrees
         public void HoldMayo()
         {
             this.mayo = false;
+            Ingredients.Remove("Mayo");
         }
     }
 }

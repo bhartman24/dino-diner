@@ -25,6 +25,8 @@ namespace DinoDiner.Menu.Sides
                         Calories = 480;
                         break;
                     case Size.Medium:
+                        Price = 1.45;
+                        Calories = 365;
                         break;
                     case Size.Small:
                         Price = 0.99;
@@ -42,7 +44,7 @@ namespace DinoDiner.Menu.Sides
         {
             this.Price = 0.99;
             this.Calories = 222;
-            this.Ingredients = new List<string>() { "Potato", "Salt", "Vegetable oil" };
+            this.Ingredients = new List<string>() { "Potato", "Salt", "Vegetable Oil" };
         }
     }
 }

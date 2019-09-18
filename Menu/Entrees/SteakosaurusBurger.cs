@@ -10,7 +10,7 @@ namespace DinoDiner.Menu.Entrees
     /// <summary>
     /// Class to represent the SteakosaurusBurger entree.
     /// </summary>
-    public class SteakosaurusBurger
+    public class SteakosaurusBurger : Entree
     {
         /// <summary>
         /// backing variables for the properties.
@@ -20,32 +20,6 @@ namespace DinoDiner.Menu.Entrees
         private bool ketchup = true;
         private bool mustard = true;
 
-        /// <summary>
-        /// Property for price
-        /// </summary>
-        public double Price { get; set; }
-
-        /// <summary>
-        /// Property for calories
-        /// </summary>
-        public uint Calories { get; set; }
-
-        /// <summary>
-        /// Property for ingredients
-        /// </summary>
-        public List<string> Ingredients
-        {
-            get
-            {
-                List<string> ingredients = new List<string>() { "Steakburger Pattie" };
-                if (bun) ingredients.Add("Whole Wheat Bun");
-                if (pickle) ingredients.Add("Pickle");
-                if (ketchup) ingredients.Add("Ketchup");
-                if (mustard) ingredients.Add("Mustard");
-
-                return ingredients;
-            }
-        }
 
         /// <summary>
         /// Class constructor to set the price and calories.
@@ -54,6 +28,7 @@ namespace DinoDiner.Menu.Entrees
         {
             this.Price = 5.15;
             this.Calories = 621;
+            this.Ingredients = new List<string>() { "Steakburger Pattie", "Whole Wheat Bun", "Pickle", "Ketchup", "Mustard" };
         }
 
         /// <summary>
@@ -62,6 +37,7 @@ namespace DinoDiner.Menu.Entrees
         public void HoldBun()
         {
             this.bun = false;
+            Ingredients.Remove("Whole Wheat Bun");
         }
 
         /// <summary>
@@ -70,6 +46,7 @@ namespace DinoDiner.Menu.Entrees
         public void HoldPickle()
         {
             this.pickle = false;
+            Ingredients.Remove("Pickle");
         }
 
         /// <summary>
@@ -78,6 +55,7 @@ namespace DinoDiner.Menu.Entrees
         public void HoldKetchup()
         {
             this.ketchup = false;
+            Ingredients.Remove("Ketchup");
         }
 
         /// <summary>
@@ -86,6 +64,7 @@ namespace DinoDiner.Menu.Entrees
         public void HoldMustard()
         {
             this.mustard = false;
+            Ingredients.Remove("Mustard");
         }
     }
 }

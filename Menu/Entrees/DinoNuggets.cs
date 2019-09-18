@@ -10,7 +10,7 @@ namespace DinoDiner.Menu.Entrees
     /// <summary>
     /// Class to represent the DinoNuggets entree.
     /// </summary>
-    public class DinoNuggets
+    public class DinoNuggets : Entree
     {
         /// <summary>
         /// backing variables for the properties.
@@ -18,20 +18,11 @@ namespace DinoDiner.Menu.Entrees
         private bool additionalNugget = false;
         private int nuggetCount = 6;
 
-        /// <summary>
-        /// Property for price
-        /// </summary>
-        public double Price { get; set; }
-
-        /// <summary>
-        /// Property for calories
-        /// </summary>
-        public uint Calories { get; set; }
 
         /// <summary>
         /// Property for ingredients
         /// </summary>
-        public List<string> Ingredients
+        /*public List<string> Ingredients
         {
             get
             {
@@ -44,7 +35,7 @@ namespace DinoDiner.Menu.Entrees
                 }
                 return ingredients;
             }
-        }
+        }*/
 
         /// <summary>
         /// Class constructor to set the price and calories.
@@ -53,6 +44,7 @@ namespace DinoDiner.Menu.Entrees
         {
             this.Price = 4.25;
             this.Calories = (uint)(59*nuggetCount);
+            this.Ingredients = new List<string>() { "Chicken Nugget", "Chicken Nugget", "Chicken Nugget", "Chicken Nugget", "Chicken Nugget", "Chicken Nugget" };
         }
 
         /// <summary>
@@ -65,6 +57,7 @@ namespace DinoDiner.Menu.Entrees
             nuggetCount++;
             Price = 4.25 + ((nuggetCount - 6) * 0.25);
             Calories = (uint)(59 * nuggetCount);
+            Ingredients.Add("Chicken Nugget");
         }
     }
 }
