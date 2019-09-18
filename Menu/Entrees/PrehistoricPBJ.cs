@@ -17,7 +17,7 @@ namespace DinoDiner.Menu.Entrees
         private bool jelly = true;
 
         /// <summary>
-        /// Class constructor to set the price and calories.
+        /// Class constructor to set the price, calories, and ingredients.
         /// </summary>
         public PrehistoricPBJ()
         {

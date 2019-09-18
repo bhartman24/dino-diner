@@ -22,7 +22,7 @@ namespace DinoDiner.Menu.Entrees
 
 
         /// <summary>
-        /// Class constructor to set the price and calories.
+        /// Class constructor to set the price, calories, and ingredients.
         /// </summary>
         public SteakosaurusBurger()
         {

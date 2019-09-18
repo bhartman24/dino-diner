@@ -20,25 +20,7 @@ namespace DinoDiner.Menu.Entrees
 
 
         /// <summary>
-        /// Property for ingredients
-        /// </summary>
-        /*public List<string> Ingredients
-        {
-            get
-            {
-                List<string> ingredients = new List<string>() { "Chicken Nugget", "Chicken Nugget", "Chicken Nugget", "Chicken Nugget", "Chicken Nugget", "Chicken Nugget" };
-                if (additionalNugget) {
-                    for(int i = nuggetCount - 6; i >0; i--)
-                    {
-                        ingredients.Add("Chicken Nugget");
-                    }
-                }
-                return ingredients;
-            }
-        }*/
-
-        /// <summary>
-        /// Class constructor to set the price and calories.
+        /// Class constructor to set the price, calories, and ingredients.
         /// </summary>
         public DinoNuggets()
         {

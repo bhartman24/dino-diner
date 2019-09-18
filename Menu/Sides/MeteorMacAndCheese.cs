@@ -12,7 +12,14 @@ namespace DinoDiner.Menu.Sides
     /// </summary>
     public class MeteorMacAndCheese : Side
     {
+        /// <summary>
+        /// backing variable for the Size property.
+        /// </summary>
         protected Size size;
+
+        /// <summary>
+        /// Property to get and set the sizes for the sides.
+        /// </summary>
         public override Size Size
         {
             set
@@ -40,6 +47,9 @@ namespace DinoDiner.Menu.Sides
             }
         }
 
+        /// <summary>
+        /// Class constructor to set the price, calories, and ingredients.
+        /// </summary>
         public MeteorMacAndCheese()
         {
             this.Price = 0.99;

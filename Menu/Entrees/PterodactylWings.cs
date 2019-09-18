@@ -13,7 +13,7 @@ namespace DinoDiner.Menu.Entrees
     public class PterodactylWings : Entree
     {
         /// <summary>
-        /// Class constructor to set the price and calories.
+        /// Class constructor to set the price, calories, and ingredients.
         /// </summary>
         public PterodactylWings()
         {
