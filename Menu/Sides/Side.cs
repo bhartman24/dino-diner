@@ -1,16 +1,13 @@
-﻿using System;
+﻿/* Side.cs
+ * Author: Ben Hartman
+ */
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace DinoDiner.Menu.Sides
 {
-
-    public enum Size
-    {
-        Small,
-        Medium, 
-        Large
-    }
+    
 
     public abstract class Side
     {
