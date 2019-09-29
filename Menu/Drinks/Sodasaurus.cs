@@ -7,6 +7,9 @@ using System.Text;
 
 namespace DinoDiner.Menu.Drinks
 {
+    /// <summary>
+    /// Sodasaurus class, inherits from the Drink class.
+    /// </summary>
     public class Sodasaurus : Drink
     {
         /// <summary>
@@ -15,29 +18,25 @@ namespace DinoDiner.Menu.Drinks
         public Sodasaurus()
         {
             this.Ingredients = new List<string>() { "Water", "Natural Flavors", "Cane Sugar" };
+            Price = 1.50;
+            this.Calories = 112;
+            Ice = true;
         }
-
-        /// <summary>
-        /// backing variable.
-        /// </summary>
-        private SodasaurusFlavor flavor = SodasaurusFlavor.Cola;
 
         /// <summary>
         /// Property for the flavor.
         /// </summary>
-        public SodasaurusFlavor Flavor {
-            get
-            {
-                return flavor;
-            }
-            set
-            {
-                flavor = value;
-            }
-        }
+        public SodasaurusFlavor Flavor { get; set; }
 
+        /// <summary>
+        /// Backing variable for the Size property.
+        /// </summary>
         private Size size = Size.Small;
-        public Size Size
+
+        /// <summary>
+        /// Property to get or set the size.
+        /// </summary>
+        public override Size Size
         {
             get
             {
@@ -46,17 +45,22 @@ namespace DinoDiner.Menu.Drinks
             set
             {
                 size = value;
-                if(size == Size.Small)
+                switch(size)
                 {
-                    Price = 1.50;
-                }
-                if(size == Size.Medium)
-                {
-                    Price = 2.00;
+                    case Size.Large:
+                        Price = 2.50;
+                        this.Calories = 208;
+                        break;
+                    case Size.Medium:
+                        Price = 2.00;
+                        this.Calories = 156;
+                        break;
+                    case Size.Small:
+                        Price = 1.50;
+                        this.Calories = 112;
+                        break;
                 }
             }
         }
-
-        public double Price = 1.50;
     }
 }

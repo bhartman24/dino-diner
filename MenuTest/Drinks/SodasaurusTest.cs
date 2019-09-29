@@ -71,9 +71,10 @@ namespace MenuTest.Drinks
         }
 
         [Fact]
-        public void ShouldHaveCorrectCalories()
+        public void ShouldHaveCorrectDefaultCalories()
         {
-
+            Sodasaurus soda = new Sodasaurus();
+            Assert.Equal<uint>(112, soda.Calories);
         }
 
         [Fact]
@@ -99,6 +100,58 @@ namespace MenuTest.Drinks
             Sodasaurus soda = new Sodasaurus();
             soda.Size = Size.Medium;
             Assert.Equal<double>(2.00, soda.Price);
+        }
+
+        [Fact]
+        public void ShouldHaveCorrectPriceForLarge()
+        {
+            Sodasaurus soda = new Sodasaurus();
+            soda.Size = Size.Large;
+            Assert.Equal<double>(2.50, soda.Price);
+        }
+
+        [Fact]
+        public void ShouldHaveCorrectCaloriesForSmall()
+        {
+            Sodasaurus soda = new Sodasaurus();
+            soda.Size = Size.Small;
+            Assert.Equal<uint>(112, soda.Calories);
+        }
+
+        [Fact]
+        public void ShouldHaveCorrectCaloriesForMedium()
+        {
+            Sodasaurus soda = new Sodasaurus();
+            soda.Size = Size.Medium;
+            Assert.Equal<uint>(156, soda.Calories);
+        }
+
+        [Fact]
+        public void ShouldHaveCorrectCaloriesForLarge()
+        {
+            Sodasaurus soda = new Sodasaurus();
+            soda.Size = Size.Large;
+            Assert.Equal<uint>(208, soda.Calories);
+        }
+
+        //Invoking HoldIce() results in the Ice property being false
+        [Fact]
+        public void ShouldHaveCorrectHoldIceResult()
+        {
+            Sodasaurus soda = new Sodasaurus();
+            soda.HoldIce();
+            Assert.False(soda.Ice);
+        }
+
+        //The correct ingredients are given
+        [Fact]
+        public void ShouldHaveCorrectIngredients()
+        {
+            Sodasaurus soda = new Sodasaurus();
+            List<string> ingredients = soda.Ingredients;
+            Assert.Contains<string>("Water", ingredients);
+            Assert.Contains<string>("Natural Flavors", ingredients);
+            Assert.Contains<string>("Cane Sugar", ingredients);
         }
     }
 }

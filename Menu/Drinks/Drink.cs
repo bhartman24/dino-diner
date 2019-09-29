@@ -7,6 +7,9 @@ using System.Text;
 
 namespace DinoDiner.Menu.Drinks
 {
+    /// <summary>
+    /// Abstract class to represent any drink.
+    /// </summary>
     public abstract class Drink
     {
         /// <summary>
@@ -24,19 +27,22 @@ namespace DinoDiner.Menu.Drinks
         /// </summary>
         public List<string> Ingredients { get; protected set; }
 
+        /// <summary>
+        /// Gets and sets whether customer wants ice.
+        /// </summary>
+        public bool Ice { get; set; }
 
-        public bool Ice
-        {
-            get
-            {
-                return true;
-            }
-            set { }
-        }
-
+        /// <summary>
+        /// Method that sets the Ice property to false;
+        /// </summary>
         public void HoldIce()
         {
-            this.Ice = false;
+            Ice = false;
         }
+
+        /// <summary>
+        /// Gets or sets the size. Taken from the Size Class.
+        /// </summary>
+        public abstract Size Size { get; set; }
     }
 }
