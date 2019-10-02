@@ -5,9 +5,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace DinoDiner.Menu.Entrees
+namespace DinoDiner.Menu
 {
-    public abstract class Entree
+    public abstract class Entree : IMenuItem
     {
         /// <summary>
         /// Gets and sets the price
@@ -23,5 +23,10 @@ namespace DinoDiner.Menu.Entrees
         /// Gets the ingredients list
         /// </summary>
         public List<string> Ingredients { get; protected set; }
+
+        public override string ToString()
+        {
+            return base.ToString();
+        }
     }
 }

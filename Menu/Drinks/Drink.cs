@@ -5,12 +5,12 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace DinoDiner.Menu.Drinks
+namespace DinoDiner.Menu
 {
     /// <summary>
     /// Abstract class to represent any drink.
     /// </summary>
-    public abstract class Drink
+    public abstract class Drink : IMenuItem
     {
         /// <summary>
         /// Gets and sets the price
@@ -44,5 +44,10 @@ namespace DinoDiner.Menu.Drinks
         /// Gets or sets the size. Taken from the Size Class.
         /// </summary>
         public abstract Size Size { get; set; }
+
+        public override string ToString()
+        {
+            return base.ToString();
+        }
     }
 }

@@ -6,10 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="CretaceousCombo.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="Milestones\" />
   </ItemGroup>
 
