@@ -10,7 +10,7 @@ namespace DinoDiner.Menu
     /// <summary>
     /// Class to represent the TRexKingBurger entree.
     /// </summary>
-    public class TRexKingBurger : Entree
+    public class TRexKingBurger : Entree, IMenuItem
     {
         /// <summary>
         /// backing variables for the properties.
@@ -105,6 +105,11 @@ namespace DinoDiner.Menu
         {
             this.mayo = false;
             Ingredients.Remove("Mayo");
+        }
+
+        public override string ToString()
+        {
+            return "TRexKingBurger";
         }
     }
 }

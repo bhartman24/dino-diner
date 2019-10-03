@@ -10,7 +10,7 @@ namespace DinoDiner.Menu
     /// <summary>
     /// Water class, inherits from the Drink class.
     /// </summary>
-    public class Water : Drink
+    public class Water : Drink, IMenuItem
     {
         /// <summary>
         /// Class constructor to set the price, calories, and ingredients. 
@@ -71,6 +71,11 @@ namespace DinoDiner.Menu
                         break;
                 }
             }
+        }
+
+        public override string ToString()
+        {
+            return "Water";
         }
     }
 }

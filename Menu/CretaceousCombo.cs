@@ -5,18 +5,33 @@ using DinoDiner.Menu;
 
 namespace DinoDiner.Menu
 {
-    public class CretaceousCombo
+    public class CretaceousCombo : IMenuItem
     {
+        /// <summary>
+        /// Gets and sets the entree.
+        /// </summary>
         public Entree Entree { get; set; }
+
+        /// <summary>
+        /// Gets and sets the drink.
+        /// </summary>
         public Drink Drink { get; set; }
+
+        /// <summary>
+        /// Gets and sets the side.
+        /// </summary>
         public Side Side { get; set; }
 
+        /// <summary>
+        /// Back Variable
+        /// </summary>
         private Size size = Size.Small;
+
+        /// <summary>
+        /// Gets or sets the size of the combo.
+        /// </summary>
         public Size Size {
-            get
-            {
-                return size;
-            }
+            get { return size; }
             set
             {
                 size = value;
@@ -25,6 +40,9 @@ namespace DinoDiner.Menu
             }
         }
 
+        /// <summary>
+        /// Gets the price of the combo.
+        /// </summary>
         public double Price
         {
             get
@@ -33,11 +51,20 @@ namespace DinoDiner.Menu
             }
         }
 
-        public override string toString()
+        /// <summary>
+        /// Gets the calories of the combo.
+        /// </summary>
+        public uint Calories
         {
-            return $"";
+            get
+            {
+                return Entree.Calories + Side.Calories + Drink.Calories;
+            }
         }
 
+        /// <summary>
+        /// Gets the list of ingredients for the combo.
+        /// </summary>
         public List<string> Ingredients
         {
             get
@@ -50,13 +77,13 @@ namespace DinoDiner.Menu
             }
         }
 
-        private CretaceousCombo() { }
-
+        /// <summary>
+        /// Constructs a new combo with the specified entree.
+        /// </summary>
+        /// <param name="entree"></param>
         public CretaceousCombo(Entree entree)
         {
-            Entree = entree;
-            Side = new Fryceritops();
-            Drink = new Sodasaurus();
+            this.Entree = entree;
         }
     }
 }

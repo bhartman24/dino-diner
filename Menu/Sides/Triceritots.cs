@@ -10,7 +10,7 @@ namespace DinoDiner.Menu
     /// <summary>
     /// Class to represent the Triceritots side.
     /// </summary>
-    public class Triceritots : Side
+    public class Triceritots : Side, IMenuItem
     {
         /// <summary>
         /// backing variable for the Size property.
@@ -55,6 +55,11 @@ namespace DinoDiner.Menu
             this.Price = 0.99;
             this.Calories = 352;
             this.Ingredients = new List<string>() { "Potato", "Salt", "Vegetable Oil" };
+        }
+
+        public override string ToString()
+        {
+            return "Triceritots";
         }
     }
 }

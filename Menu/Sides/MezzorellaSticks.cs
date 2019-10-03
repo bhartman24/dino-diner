@@ -10,7 +10,7 @@ namespace DinoDiner.Menu
     /// <summary>
     /// Class to represent the MezzorellaSticks side.
     /// </summary>
-    public class MezzorellaSticks : Side
+    public class MezzorellaSticks : Side, IMenuItem
     {
         /// <summary>
         /// backing variable for the Size property.
@@ -55,6 +55,11 @@ namespace DinoDiner.Menu
             this.Price = 0.99;
             this.Calories = 540;
             this.Ingredients = new List<string>() { "Cheese Product", "Breading", "Vegetable Oil" };
+        }
+
+        public override string ToString()
+        {
+            return "MezzorellaSticks";
         }
     }
 }

@@ -10,7 +10,7 @@ namespace DinoDiner.Menu
     /// <summary>
     /// Class to represent the VelociWrap entree.
     /// </summary>
-    public class VelociWrap : Entree
+    public class VelociWrap : Entree, IMenuItem
     {
         /// <summary>
         /// backing variables for the properties.
@@ -55,6 +55,11 @@ namespace DinoDiner.Menu
         {
             this.cheese = false;
             Ingredients.Remove("Parmesan Cheese");
+        }
+
+        public override string ToString()
+        {
+            return "VelociWrap";
         }
     }
 }

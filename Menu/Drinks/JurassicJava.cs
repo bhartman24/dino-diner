@@ -10,7 +10,7 @@ namespace DinoDiner.Menu
     /// <summary>
     /// Class that represents JurassicJava, inherits from Drink class.
     /// </summary>
-    public class JurassicJava : Drink
+    public class JurassicJava : Drink, IMenuItem
     {
         /// <summary>
         /// Class constructor to set the price, calories, and ingredients.
@@ -84,6 +84,11 @@ namespace DinoDiner.Menu
                         break;
                 }
             }
+        }
+
+        public override string ToString()
+        {
+            return "JurassicJava";
         }
     }
 }

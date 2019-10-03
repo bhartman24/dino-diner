@@ -10,7 +10,7 @@ namespace DinoDiner.Menu
     /// <summary>
     /// Sodasaurus class, inherits from the Drink class.
     /// </summary>
-    public class Sodasaurus : Drink
+    public class Sodasaurus : Drink, IMenuItem
     {
         /// <summary>
         /// Class constructor to set the price, calories, and ingredients.
@@ -61,6 +61,11 @@ namespace DinoDiner.Menu
                         break;
                 }
             }
+        }
+
+        public override string ToString()
+        {
+            return "Sodasaurus";
         }
     }
 }

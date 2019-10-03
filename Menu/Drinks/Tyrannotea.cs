@@ -10,7 +10,7 @@ namespace DinoDiner.Menu
     /// <summary>
     /// Tyrannotea class, inherits from the Drink class.
     /// </summary>
-    public class Tyrannotea : Drink
+    public class Tyrannotea : Drink, IMenuItem
     {
         /// <summary>
         /// Class constructor to set the price, calories, and ingredients.
@@ -88,6 +88,11 @@ namespace DinoDiner.Menu
                         break;
                 }
             }
+        }
+
+        public override string ToString()
+        {
+            return "Tyrannotea";
         }
     }
 }

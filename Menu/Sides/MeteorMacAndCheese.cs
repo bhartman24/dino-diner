@@ -10,7 +10,7 @@ namespace DinoDiner.Menu
     /// <summary>
     /// Class to represent the MeteorMacAndCheese side.
     /// </summary>
-    public class MeteorMacAndCheese : Side
+    public class MeteorMacAndCheese : Side, IMenuItem
     {
         /// <summary>
         /// backing variable for the Size property.
@@ -55,6 +55,11 @@ namespace DinoDiner.Menu
             this.Price = 0.99;
             this.Calories = 420;
             this.Ingredients = new List<string>() { "Macaroni Noodles", "Cheese Product", "Pork Sausage" };
+        }
+
+        public override string ToString()
+        {
+            return "MeteorMacAndCheese";
         }
     }
 }

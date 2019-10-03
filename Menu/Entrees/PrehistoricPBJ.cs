@@ -8,7 +8,7 @@ namespace DinoDiner.Menu
     /// <summary>
     /// Class to represent the PrehistoricPBJ entree.
     /// </summary>
-    public class PrehistoricPBJ : Entree
+    public class PrehistoricPBJ : Entree, IMenuItem
     {
         /// <summary>
         /// backing variables for the properties.
@@ -42,6 +42,11 @@ namespace DinoDiner.Menu
         {
             this.jelly = false;
             Ingredients.Remove("Jelly");
+        }
+
+        public override string ToString()
+        {
+            return "PrehistoricPBJ";
         }
     }
 }

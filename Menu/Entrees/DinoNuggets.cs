@@ -10,7 +10,7 @@ namespace DinoDiner.Menu
     /// <summary>
     /// Class to represent the DinoNuggets entree.
     /// </summary>
-    public class DinoNuggets : Entree
+    public class DinoNuggets : Entree, IMenuItem
     {
         /// <summary>
         /// backing variables for the properties.
@@ -40,6 +40,11 @@ namespace DinoDiner.Menu
             Price = 4.25 + ((nuggetCount - 6) * 0.25);
             Calories = (uint)(59 * nuggetCount);
             Ingredients.Add("Chicken Nugget");
+        }
+
+        public override string ToString()
+        {
+            return "DinoNuggets";
         }
     }
 }
