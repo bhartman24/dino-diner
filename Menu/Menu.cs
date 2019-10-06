@@ -1,65 +1,85 @@
-﻿using System;
+﻿/* Menu.cs
+ * Author: Ben Hartman
+ */
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace DinoDiner.Menu
 {
+    /// <summary>
+    /// Class that lists all available menu items and subclasses.
+    /// </summary>
     public class Menu
     {
+        /// <summary>
+        /// Property to return all of the available menu items.
+        /// </summary>
         public List<IMenuItem> AvailableMenuItems
         {
             get
             {
-                List<Drink> drink = new List<Drink>();
-                drink.AddRange(drink);
-                List<Entree> entree = new List<Entree>();
-                entree.AddRange(entree);
-                List<Side> side = new List<Side>();
-                side.AddRange(side);
-                
+                List<IMenuItem> items = new List<IMenuItem>();
+                return items;
             }
         }
 
+        /// <summary>
+        /// Property to return the available entrees.
+        /// </summary>
         public List<Entree> AvailableEntrees
         {
             get
             {
                 List<Entree> entree = new List<Entree>();
-                entree.AddRange(entree);
                 return entree;
             }
         }
 
+        /// <summary>
+        /// Property to return the available sides.
+        /// </summary>
         public List<Side> AvailableSides
         {
             get
             {
                 List<Side> side = new List<Side>();
-                side.AddRange(side);
                 return side;
             }
         }
 
+        /// <summary>
+        /// Property to return the available drinks.
+        /// </summary>
         public List<Drink> AvailableDrinks
         {
             get
             {
                 List<Drink> drink = new List<Drink>();
-                drink.AddRange(drink);
                 return drink;
             }
         }
 
-        public List<IMenuItem> AvailableCombos
-        {
-            get;
-        }
+        /// <summary>
+        /// Property to return the available combos.
+        /// </summary>
+        public List<CretaceousCombo> AvailableCombos { get; }
 
+
+        /// <summary>
+        /// Method to override ToString() to return name of item.
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
-            return base.ToString();
+            List<IMenuItem> menu = new List<IMenuItem>();
+            List<string> menuList = new List<string>();
+            foreach(IMenuItem item in menu)
+            {
+                menuList.Add(item.ToString());
+                menuList.Add("\n");
+            }
+            return menuList.ToString();
         }
-
-
     }
 }

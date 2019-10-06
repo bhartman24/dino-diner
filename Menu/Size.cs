@@ -1,4 +1,7 @@
-﻿using System;
+﻿/* Size.cs
+ * Author: Ben Hartman
+ */
+using System;
 using System.Collections.Generic;
 using System.Text;
 using DinoDiner.Menu;

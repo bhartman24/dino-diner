@@ -17,7 +17,6 @@ namespace DinoDiner.Menu
         /// </summary>
         public Water()
         {
-            this.Ingredients = new List<string>() { "Water" };
             Price = .10;
             this.Calories = 0;
             Lemon = false;
@@ -73,9 +72,26 @@ namespace DinoDiner.Menu
             }
         }
 
+        /// <summary>
+        /// Property to return a list of the Ingredients.
+        /// </summary>
+        public override List<string> Ingredients
+        {
+            get
+            {
+                List<string> Ingredients = new List<string>() { "Water"};
+                if (Lemon) { Ingredients.Add("Lemon"); }
+                return Ingredients;
+            }
+        }
+
+        /// <summary>
+        /// Method to override ToString() to return name of item.
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
-            return "Water";
+            return size + " Water";
         }
     }
 }

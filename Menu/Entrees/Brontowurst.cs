@@ -27,7 +27,6 @@ namespace DinoDiner.Menu
         {
             this.Price = 5.36;
             this.Calories = 498;
-            this.Ingredients = new List<string>() { "Brautwurst", "Whole Wheat Bun", "Onion", "Peppers" };
         }
 
         /// <summary>
@@ -57,6 +56,25 @@ namespace DinoDiner.Menu
             Ingredients.Remove("Peppers");
         }
 
+        /// <summary>
+        /// Property to return a list of the Ingredients.
+        /// </summary>
+        public override List<string> Ingredients
+        {
+            get
+            {
+                List<string> Ingredients = new List<string>() { "Brautwurst", "Whole Wheat Bun", "Onion", "Peppers" };
+                if (bun == false) { Ingredients.Remove("Whole Wheat Bun"); }
+                if (onions == false) { Ingredients.Remove("Onion"); }
+                if(peppers == false) { Ingredients.Remove("Peppers"); }
+                return Ingredients;
+            }
+        }
+
+        /// <summary>
+        /// Method to override ToString() to return name of item.
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return "Brontowurst" ;

@@ -25,7 +25,7 @@ namespace DinoDiner.Menu
         /// <summary>
         /// Gets the ingredients list
         /// </summary>
-        public List<string> Ingredients { get; protected set; }
+        public abstract List<string> Ingredients { get; }
 
         /// <summary>
         /// Gets and sets whether customer wants ice.
@@ -45,6 +45,10 @@ namespace DinoDiner.Menu
         /// </summary>
         public abstract Size Size { get; set; }
 
+        /// <summary>
+        /// Method to override ToString() to return name of item.
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return base.ToString();

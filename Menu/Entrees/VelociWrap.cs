@@ -27,7 +27,6 @@ namespace DinoDiner.Menu
         {
             this.Price = 6.86;
             this.Calories = 356;
-            this.Ingredients = new List<string>() { "Flour Tortilla", "Chicken Breast", "Romaine Lettuce", "Ceasar Dressing", "Parmesan Cheese" };
         }
 
         /// <summary>
@@ -57,9 +56,26 @@ namespace DinoDiner.Menu
             Ingredients.Remove("Parmesan Cheese");
         }
 
+        /// <summary>
+        /// Property to return a list of the Ingredients.
+        /// </summary>
+        public override List<string> Ingredients
+        {
+            get
+            {
+                List<string> Ingredients = new List<string>() { "Flour Tortilla", "Chicken Breast", "Romaine Lettuce", "Ceasar Dressing", "Parmesan Cheese" };
+                if(cheese == false) { Ingredients.Remove("Parmesan Cheese"); }
+                return Ingredients;
+            }
+        }
+
+        /// <summary>
+        /// Method to override ToString() to return name of item.
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
-            return "VelociWrap";
+            return "Veloci-Wrap";
         }
     }
 }

@@ -17,23 +17,21 @@ namespace DinoDiner.Menu
         /// </summary>
         public JurassicJava()
         {
-            this.Ingredients = new List<string>() { "Water", "Coffee" };
+            this.Size = Size.Small;
             Ice = false;
             Price = 0.59;
             this.Calories = 2;
-            SpaceForCream = false;
-            Decaf = false;
         }
 
         /// <summary>
         /// Property for the Room for the cream.
         /// </summary>
-        public bool SpaceForCream { get; set; }
+        public bool SpaceForCream { get; set; } = false;
 
         /// <summary>
         /// Gets and sets if customer wants coffee decaf.
         /// </summary>
-        public bool Decaf { get; set; }
+        public bool Decaf { get; set; } = false;
 
         /// <summary>
         /// Method to leave room for cream in their coffee.
@@ -86,9 +84,28 @@ namespace DinoDiner.Menu
             }
         }
 
+        /// <summary>
+        /// Property to return a list of the Ingredients.
+        /// </summary>
+        public override List<string> Ingredients
+        {
+            get
+            {
+                return new List<string>() { "Water", "Coffee" };
+            }
+        }
+
+        /// <summary>
+        /// Method to override ToString() to return name of item.
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
-            return "JurassicJava";
+            if(Decaf)
+            {
+                return size + " Decaf Jurassic Java";
+            }
+            else return size + " Jurassic Java";
         }
     }
 }

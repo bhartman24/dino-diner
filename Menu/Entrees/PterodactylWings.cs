@@ -19,12 +19,26 @@ namespace DinoDiner.Menu
         {
             this.Price = 7.21;
             this.Calories = 318;
-            this.Ingredients = new List<string>() { "Chicken", "Wing Sauce", };
         }
 
+        /// <summary>
+        /// Property to return a list of the Ingredients.
+        /// </summary>
+        public override List<string> Ingredients
+        {
+            get
+            {
+                return new List<string>() { "Chicken", "Wing Sauce", };
+            }
+        }
+
+        /// <summary>
+        /// Method to override ToString() to return name of item.
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
-            return "PterodactylWings";
+            return "Pterodactyl Wings";
         }
     }
 }

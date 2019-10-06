@@ -26,7 +26,6 @@ namespace DinoDiner.Menu
         {
             this.Price = 4.25;
             this.Calories = (uint)(59*nuggetCount);
-            this.Ingredients = new List<string>() { "Chicken Nugget", "Chicken Nugget", "Chicken Nugget", "Chicken Nugget", "Chicken Nugget", "Chicken Nugget" };
         }
 
         /// <summary>
@@ -39,12 +38,34 @@ namespace DinoDiner.Menu
             nuggetCount++;
             Price = 4.25 + ((nuggetCount - 6) * 0.25);
             Calories = (uint)(59 * nuggetCount);
-            Ingredients.Add("Chicken Nugget");
         }
 
+        /// <summary>
+        /// Property to return a list of the Ingredients.
+        /// </summary>
+        public override List<string> Ingredients
+        {
+            get
+            {
+                List<string> Ingredients = new List<string>() { "Chicken Nugget", "Chicken Nugget", "Chicken Nugget", "Chicken Nugget", "Chicken Nugget", "Chicken Nugget" };
+                
+                if(additionalNugget == true) {
+                    for (int i = 0; i < nuggetCount-6; i++)
+                    {
+                        Ingredients.Add("Chicken Nugget");
+                    }
+                }
+                return Ingredients;
+            }
+        }
+
+        /// <summary>
+        /// Method to override ToString() to return name of item.
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
-            return "DinoNuggets";
+            return "Dino-Nuggets";
         }
     }
 }
