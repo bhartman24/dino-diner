@@ -20,6 +20,17 @@ namespace DinoDiner.Menu
             get
             {
                 List<IMenuItem> items = new List<IMenuItem>();
+                items.Add(new Brontowurst());
+                items.Add(new DinoNuggets());
+                items.Add(new PrehistoricPBJ());
+                items.Add(new PterodactylWings());
+                items.Add(new SteakosaurusBurger());
+                items.Add(new TRexKingBurger());
+                items.Add(new VelociWrap());
+                items.Add(new Fryceritops());
+                items.Add(new MeteorMacAndCheese());
+                items.Add(new MezzorellaSticks());
+                items.Add(new Triceritots());
                 return items;
             }
         }
