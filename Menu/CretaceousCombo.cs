@@ -5,6 +5,9 @@ using DinoDiner.Menu;
 
 namespace DinoDiner.Menu
 {
+    /// <summary>
+    /// Class for the Cretaceous combo.
+    /// </summary>
     public class CretaceousCombo : IMenuItem
     {
         /// <summary>
