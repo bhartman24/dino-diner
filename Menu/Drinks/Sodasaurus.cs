@@ -4,14 +4,37 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel;
 
 namespace DinoDiner.Menu
 {
     /// <summary>
     /// Sodasaurus class, inherits from the Drink class.
     /// </summary>
-    public class Sodasaurus : Drink, IMenuItem
+    public class Sodasaurus : Drink, IMenuItem, IOrderItem
     {
+
+        /// <summary>
+        /// Gets a description of this order item.
+        /// </summary>
+        public override string Description
+        {
+            get { return this.ToString(); }
+        }
+
+        /// <summary>
+        /// Gets any special instructions for this order item.
+        /// </summary>
+        public override string[] Special
+        {
+            get
+            {
+                List<string> special = new List<string>();
+                if (!Ice) special.Add("Hold Ice");
+                return special.ToArray();
+            }
+        }
+
         /// <summary>
         /// Class constructor to set the price, calories, and ingredients.
         /// </summary>
@@ -73,13 +96,14 @@ namespace DinoDiner.Menu
             }
         }
 
+
         /// <summary>
         /// Method to override ToString() to return name of item.
         /// </summary>
         /// <returns></returns>
         public override string ToString()
         {
-            return size + " " + Flavor + " Sodasaurus";
+            return $"{Size} {Flavor} Sodasaurus";
         }
     }
 }

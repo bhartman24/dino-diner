@@ -153,5 +153,29 @@ namespace MenuTest.Drinks
             Assert.Contains<string>("Natural Flavors", ingredients);
             Assert.Contains<string>("Cane Sugar", ingredients);
         }
+
+        [Fact]
+        public void HoldIceShouldNotifyOfSpecialPropertyChange()
+        {
+            Sodasaurus soda = new Sodasaurus();
+            Assert.PropertyChanged(soda, "Special", () =>
+            {
+                soda.HoldIce();
+            });
+        }
+
+        [Fact]
+        public void ShouldHaveEmptySpecialListByDefault()
+        {
+            Sodasaurus soda = new Sodasaurus();
+            Assert.Empty(soda.Special);
+        }
+
+        [Fact]
+        public void ShouldHaveCorrectDescriptionMethod()
+        {
+            Sodasaurus soda = new Sodasaurus();
+            Assert.Equal($"{soda.Size} {soda.Flavor} Sodasaurus", soda.Description);
+        }
     }
 }

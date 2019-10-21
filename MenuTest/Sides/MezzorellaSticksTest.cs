@@ -83,5 +83,19 @@ namespace MenuTest.Sides
             ms.Size = Size.Large;
             Assert.Equal<Size>(Size.Large, ms.Size);
         }
+
+        [Fact]
+        public void ShouldHaveEmptySpecialListByDefault()
+        {
+            MezzorellaSticks ms = new MezzorellaSticks();
+            Assert.Empty(ms.Special);
+        }
+
+        [Fact]
+        public void ShouldHaveCorrectDescriptionMethod()
+        {
+            MezzorellaSticks ms = new MezzorellaSticks();
+            Assert.Equal($"{ms.Size} Mezzorella Sticks", ms.Description);
+        }
     }
 }

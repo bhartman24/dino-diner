@@ -35,8 +35,8 @@ namespace DinoDiner.Menu
             set
             {
                 size = value;
-                Drink.Size = size;
-                Side.Size = size;
+                Drink.Size = value;
+                Side.Size = value;
             }
         }
 
@@ -93,7 +93,32 @@ namespace DinoDiner.Menu
         /// <returns></returns>
         public override string ToString()
         {
-            return Entree + " Combo";
+            return $"{Entree} Combo";
+        }
+
+        /// <summary>
+        /// Gets the Description.
+        /// </summary>
+        public string Description
+        {
+            get { return this.ToString(); }
+        }
+
+        /// <summary>
+        /// Gets any special preparation instructions.
+        /// </summary>
+        public string[] Special
+        {
+            get
+            {
+                List<string> ingredients = new List<string>();
+                ingredients.Add(Entree.Special.ToString());
+                ingredients.Add(Side.Description);
+                ingredients.Add(Side.Special.ToString());
+                ingredients.Add(Drink.Description);
+                ingredients.Add(Drink.Special.ToString());
+                return ingredients.ToArray();
+            }
         }
     }
 }

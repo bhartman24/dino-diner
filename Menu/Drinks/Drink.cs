@@ -4,14 +4,53 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel;
 
 namespace DinoDiner.Menu
 {
     /// <summary>
     /// Abstract class to represent any drink.
     /// </summary>
-    public abstract class Drink : IMenuItem
+    public abstract class Drink : IMenuItem, INotifyPropertyChanged, IOrderItem
     {
+        /// <summary>
+        /// The PropertyChanged event handler; notifies of changes to the Price,
+        /// Description, and Special properties.
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        /// <summary>
+        /// Helper function for notifying of property changes.
+        /// </summary>
+        /// <param name="propertyName"></param>
+        public void NotifyOfPropertyChange(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        /// <summary>
+        /// Gets and sets the description.
+        /// </summary>
+        public virtual string Description {
+            get { return this.ToString(); }
+        }
+
+        /// <summary>
+        /// Gets any special preparation instructions.
+        /// </summary>
+        public virtual string[] Special
+        {
+            get
+            {
+                List<string> special = new List<string>();
+                special.Add(new JurassicJava().Special.ToString());
+                special.Add(new Sodasaurus().Special.ToString());
+                special.Add(new Tyrannotea().Special.ToString());
+                special.Add(new Water().Special.ToString());
+                return special.ToArray();
+            }
+        }
+
         /// <summary>
         /// Gets and sets the price
         /// </summary>
@@ -25,7 +64,7 @@ namespace DinoDiner.Menu
         /// <summary>
         /// Gets the ingredients list
         /// </summary>
-        public abstract List<string> Ingredients { get; }
+        public virtual List<string> Ingredients { get; }
 
         /// <summary>
         /// Gets and sets whether customer wants ice.
@@ -38,12 +77,13 @@ namespace DinoDiner.Menu
         public void HoldIce()
         {
             Ice = false;
+            NotifyOfPropertyChange("Special");
         }
 
         /// <summary>
         /// Gets or sets the size. Taken from the Size Class.
         /// </summary>
-        public abstract Size Size { get; set; }
+        public virtual Size Size { get; set; }
 
         /// <summary>
         /// Method to override ToString() to return name of item.

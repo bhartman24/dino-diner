@@ -10,8 +10,28 @@ namespace DinoDiner.Menu
     /// <summary>
     /// Class to represent the Fryceritops side.
     /// </summary>
-    public class Fryceritops : Side, IMenuItem
+    public class Fryceritops : Side, IMenuItem, IOrderItem
     {
+        /// <summary>
+        /// Gets and sets the description.
+        /// </summary>
+        public override string Description
+        {
+            get { return this.ToString(); }
+        }
+
+        /// <summary>
+        /// Gets any special preparation instructions.
+        /// </summary>
+        public override string[] Special
+        {
+            get
+            {
+                List<string> special = new List<string>();
+                return special.ToArray();
+            }
+        }
+
         /// <summary>
         /// backing variable for the Size property.
         /// </summary>

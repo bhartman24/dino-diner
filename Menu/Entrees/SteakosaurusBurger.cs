@@ -4,13 +4,14 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel;
 
 namespace DinoDiner.Menu
 {
     /// <summary>
     /// Class to represent the SteakosaurusBurger entree.
     /// </summary>
-    public class SteakosaurusBurger : Entree, IMenuItem
+    public class SteakosaurusBurger : Entree, IMenuItem, IOrderItem, INotifyPropertyChanged
     {
         /// <summary>
         /// backing variables for the properties.
@@ -20,6 +21,29 @@ namespace DinoDiner.Menu
         private bool ketchup = true;
         private bool mustard = true;
 
+        /// <summary>
+        /// Gets and sets the description.
+        /// </summary>
+        public override string Description
+        {
+            get { return this.ToString(); }
+        }
+
+        /// <summary>
+        /// Gets any special preparation instructions.
+        /// </summary>
+        public override string[] Special
+        {
+            get
+            {
+                List<string> special = new List<string>();
+                if (!bun) special.Add("Hold Whole Wheat Bun");
+                if (!ketchup) special.Add("Hold Ketchup");
+                if (!mustard) special.Add("Hold Mustard");
+                if (!pickle) special.Add("Hold Pickle");
+                return special.ToArray();
+            }
+        }
 
         /// <summary>
         /// Class constructor to set the price, calories, and ingredients.
@@ -36,7 +60,8 @@ namespace DinoDiner.Menu
         public void HoldBun()
         {
             this.bun = false;
-            Ingredients.Remove("Whole Wheat Bun");
+            NotifyOfPropertyChange("Special");
+            NotifyOfPropertyChange("Ingredients");
         }
 
         /// <summary>
@@ -45,7 +70,8 @@ namespace DinoDiner.Menu
         public void HoldPickle()
         {
             this.pickle = false;
-            Ingredients.Remove("Pickle");
+            NotifyOfPropertyChange("Special");
+            NotifyOfPropertyChange("Ingredients");
         }
 
         /// <summary>
@@ -54,7 +80,8 @@ namespace DinoDiner.Menu
         public void HoldKetchup()
         {
             this.ketchup = false;
-            Ingredients.Remove("Ketchup");
+            NotifyOfPropertyChange("Special");
+            NotifyOfPropertyChange("Ingredients");
         }
 
         /// <summary>
@@ -63,7 +90,8 @@ namespace DinoDiner.Menu
         public void HoldMustard()
         {
             this.mustard = false;
-            Ingredients.Remove("Mustard");
+            NotifyOfPropertyChange("Special");
+            NotifyOfPropertyChange("Ingredients");
         }
 
         /// <summary>
@@ -73,7 +101,7 @@ namespace DinoDiner.Menu
         {
             get
             {
-                List<string> Ingredients = new List<string>() { "Steakburger Pattie", "Whole Wheat Bun", "Pickle", "Ketchup", "Mustard" };
+                List<string> Ingredients = new List<string>() { "Steakburger Pattie", "Whole Wheat Bun", "Ketchup", "Mustard", "Pickle" };
                 if (bun == false) { Ingredients.Remove("Whole Wheat Bun"); }
                 if (ketchup == false) { Ingredients.Remove("Ketchup"); }
                 if(mustard == false) { Ingredients.Remove("Mustard"); }

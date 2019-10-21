@@ -4,14 +4,38 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel;
 
 namespace DinoDiner.Menu
 {
     /// <summary>
     /// Class that represents JurassicJava, inherits from Drink class.
     /// </summary>
-    public class JurassicJava : Drink, IMenuItem
+    public class JurassicJava : Drink, IMenuItem, IOrderItem
     {
+
+        /// <summary>
+        /// Gets and sets the description.
+        /// </summary>
+        public override string Description
+        {
+            get { return this.ToString(); }
+        }
+
+        /// <summary>
+        /// Gets any special preparation instructions.
+        /// </summary>
+        public override string[] Special
+        {
+            get
+            {
+                List<string> special = new List<string>();
+                if (SpaceForCream) special.Add("Leave Space for Cream");
+                if (Ice) special.Add("Add Ice");
+                return special.ToArray();
+            }
+        }
+
         /// <summary>
         /// Class constructor to set the price, calories, and ingredients.
         /// </summary>
@@ -39,6 +63,7 @@ namespace DinoDiner.Menu
         public void LeaveRoomForCream()
         {
             SpaceForCream = true;
+            NotifyOfPropertyChange("Special");
         }
 
         /// <summary>
@@ -47,6 +72,7 @@ namespace DinoDiner.Menu
         public void AddIce()
         {
             Ice = true;
+            NotifyOfPropertyChange("Special");
         }
 
         /// <summary>

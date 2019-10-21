@@ -4,13 +4,14 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel;
 
 namespace DinoDiner.Menu
 {
     /// <summary>
     /// Class to represent the VelociWrap entree.
     /// </summary>
-    public class VelociWrap : Entree, IMenuItem
+    public class VelociWrap : Entree, IMenuItem, IOrderItem, INotifyPropertyChanged
     {
         /// <summary>
         /// backing variables for the properties.
@@ -19,6 +20,28 @@ namespace DinoDiner.Menu
         private bool dressing = true;
         private bool cheese = true;
 
+        /// <summary>
+        /// Gets and sets the description.
+        /// </summary>
+        public override string Description
+        {
+            get { return this.ToString(); }
+        }
+
+        /// <summary>
+        /// Gets any special preparation instructions.
+        /// </summary>
+        public override string[] Special
+        {
+            get
+            {
+                List<string> special = new List<string>();
+                if (!cheese) special.Add("Hold Parmesan Cheese");
+                if (!lettuce) special.Add("Hold Lettuce");
+                if (!dressing) special.Add("Hold Ceasar Dressing");
+                return special.ToArray();
+            }
+        }
 
         /// <summary>
         /// Class constructor to set the price, calories, and ingredients.
@@ -35,7 +58,8 @@ namespace DinoDiner.Menu
         public void HoldLettuce()
         {
             this.lettuce = false;
-            Ingredients.Remove("Lettuce");
+            NotifyOfPropertyChange("Special");
+            NotifyOfPropertyChange("Ingredients");
         }
 
         /// <summary>
@@ -44,7 +68,8 @@ namespace DinoDiner.Menu
         public void HoldDressing()
         {
             this.dressing = false;
-            Ingredients.Remove("Dressing");
+            NotifyOfPropertyChange("Special");
+            NotifyOfPropertyChange("Ingredients");
         }
 
         /// <summary>
@@ -53,7 +78,8 @@ namespace DinoDiner.Menu
         public void HoldCheese()
         {
             this.cheese = false;
-            Ingredients.Remove("Parmesan Cheese");
+            NotifyOfPropertyChange("Special");
+            NotifyOfPropertyChange("Ingredients");
         }
 
         /// <summary>
@@ -63,8 +89,10 @@ namespace DinoDiner.Menu
         {
             get
             {
-                List<string> Ingredients = new List<string>() { "Flour Tortilla", "Chicken Breast", "Romaine Lettuce", "Ceasar Dressing", "Parmesan Cheese" };
+                List<string> Ingredients = new List<string>() { "Flour Tortilla", "Chicken Breast", "Parmesan Cheese", "Romaine Lettuce", "Ceasar Dressing",};
                 if(cheese == false) { Ingredients.Remove("Parmesan Cheese"); }
+                if (lettuce == false) { Ingredients.Remove("Lettuce"); }
+                if (dressing == false) { Ingredients.Remove("Dressing"); }
                 return Ingredients;
             }
         }

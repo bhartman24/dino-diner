@@ -122,5 +122,76 @@ namespace MenuTest.Drinks
             Assert.Contains<string>("Water", ingredients);
             Assert.Contains<string>("Coffee", ingredients);
         }
+
+        [Fact]
+        public void AddIceShouldNotifyOfSpecialPropertyChange()
+        {
+            JurassicJava java = new JurassicJava();
+            Assert.PropertyChanged(java, "Special", () =>
+            {
+                java.AddIce();
+            });
+        }
+
+        [Fact]
+        public void ShouldHaveEmptySpecialListByDefault()
+        {
+            JurassicJava java = new JurassicJava();
+            Assert.Empty(java.Special);
+        }
+
+        [Fact]
+        public void SpecialShouldAddIce()
+        {
+            JurassicJava java = new JurassicJava();
+            java.AddIce();
+            Assert.Collection<string>(java.Special, item =>
+            {
+                Assert.Equal("Add Ice", item);
+            });
+        }
+
+        [Fact]
+        public void SpecialShouldLeaveSpaceForCream()
+        {
+            JurassicJava java = new JurassicJava();
+            java.LeaveRoomForCream();
+            Assert.Collection<string>(java.Special, item =>
+            {
+                Assert.Equal("Leave Space for Cream", item);
+            });
+        }
+
+        [Fact]
+        public void SpecialShouldAddIceAndLeaveSpaceForCream()
+        {
+            JurassicJava java = new JurassicJava();
+            java.LeaveRoomForCream();
+            java.AddIce();
+            Assert.Collection<string>(java.Special, item =>
+            {
+                Assert.Equal("Leave Space for Cream", item);
+            },
+            item =>
+            {
+                Assert.Equal("Add Ice", item);
+            }
+            );
+        }
+
+        [Fact]
+        public void ShouldHaveCorrectDescriptionMethod()
+        {
+            JurassicJava java = new JurassicJava();
+            Assert.Equal($"{java.Size} Jurassic Java", java.Description);
+        }
+
+        [Fact]
+        public void ShouldHaveCorrectDescriptionMethodForDecaf()
+        {
+            JurassicJava java = new JurassicJava();
+            java.Decaf = true;
+            Assert.Equal($"{java.Size} Decaf Jurassic Java", java.Description);
+        }
     }
 }

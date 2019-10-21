@@ -4,13 +4,14 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel;
 
 namespace DinoDiner.Menu
 {
     /// <summary>
     /// Class to represent the Brontowurst entree.
     /// </summary>
-    public class Brontowurst : Entree, IMenuItem
+    public class Brontowurst : Entree, IMenuItem, IOrderItem, INotifyPropertyChanged
     {
         /// <summary>
         /// backing variables for the properties.
@@ -18,8 +19,30 @@ namespace DinoDiner.Menu
         private bool bun = true;
         private bool onions = true;
         private bool peppers = true;
-            
-            
+
+        /// <summary>
+        /// Gets the description.
+        /// </summary>
+        public override string Description
+        {
+            get { return this.ToString(); }
+        }
+
+        /// <summary>
+        /// Gets any special preparation instructions.
+        /// </summary>
+        public override string[] Special
+        {
+            get
+            {
+                List<string> special = new List<string>();
+                if (!bun) special.Add("Hold Whole Wheat Bun");
+                if (!onions) special.Add("Hold Onion");
+                if (!peppers) special.Add("Hold Peppers");
+                return special.ToArray();
+            }
+        }
+
         /// <summary>
         /// Class constructor to set the price, calories, and ingredients.
         /// </summary>
@@ -35,7 +58,8 @@ namespace DinoDiner.Menu
         public void HoldBun()
         {
             this.bun = false;
-            Ingredients.Remove("Whole Wheat Bun");
+            NotifyOfPropertyChange("Special");
+            NotifyOfPropertyChange("Ingredients");
         }
 
         /// <summary>
@@ -44,7 +68,8 @@ namespace DinoDiner.Menu
         public void HoldOnion()
         {
             this.onions = false;
-            Ingredients.Remove("Onion");
+            NotifyOfPropertyChange("Special");
+            NotifyOfPropertyChange("Ingredients");
         }
 
         /// <summary>
@@ -53,7 +78,8 @@ namespace DinoDiner.Menu
         public void HoldPeppers()
         {
             this.peppers = false;
-            Ingredients.Remove("Peppers");
+            NotifyOfPropertyChange("Special");
+            NotifyOfPropertyChange("Ingredients");
         }
 
         /// <summary>
