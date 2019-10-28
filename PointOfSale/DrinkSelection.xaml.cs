@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using DinoDiner.Menu;
 
 namespace PointOfSale
 {
@@ -21,6 +22,12 @@ namespace PointOfSale
     public partial class DrinkSelection : Page
     {
         /// <summary>
+        /// private backing variable for the Drink.
+        /// </summary>
+        private Drink drink;
+
+
+        /// <summary>
         /// Method that implements the xaml page.
         /// </summary>
         public DrinkSelection()
@@ -29,13 +36,82 @@ namespace PointOfSale
         }
 
         /// <summary>
+        /// Contructor for the Drink Selection
+        /// </summary>
+        /// <param name="drink"></param>
+        public DrinkSelection(Drink drink)
+        {
+            InitializeComponent();
+            this.drink = drink;
+            if(drink is Drink d)
+            {
+                if(d is Sodasaurus s)
+                {
+                    flavor = true;
+                }
+                else
+                {
+                    flavor = false;
+                }
+            }
+        }
+
+        /// <summary>
+        /// private backing variable for the flavor.
+        /// </summary>
+        private bool flavor = false;
+
+        /// <summary>
+        /// Method to select a drink 
+        /// </summary>
+        /// <param name="drink"></param>
+        private void SelectDrink(Drink drink)
+        {
+            if(DataContext is Order order)
+            {
+                if(drink is Sodasaurus)
+                {
+                    flavor = true;
+                }
+                order.Add(drink);
+                this.drink = drink;
+            }
+        }
+
+        /// <summary>
+        /// Method to select the size for that drink.
+        /// </summary>
+        /// <param name="size"></param>
+        private void SelectSize(DinoDiner.Menu.Size size)
+        {
+            if (drink != null)
+            {
+                this.drink.Size = size;
+            }
+
+        }
+
+        /// <summary>
         /// Method that navigates to the FlavorSelection page.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
-        private void ChooseFlavor(object sender, RoutedEventArgs args)
+        private void ChooseSweetDecafFlavor(object sender, RoutedEventArgs args)
         {
-            NavigationService.Navigate(new FlavorSelection());
+            if(flavor == true)
+            {
+                NavigationService.Navigate(new FlavorSelection());
+            }
+            else if(drink is Tyrannotea t)
+            {
+                t.Sweet = true;
+                BtnAddSweetDecafFlavor.Content = "Add Sugar";
+            }
+            else if(drink is JurassicJava j)
+            {
+                j.Decaf = true;
+                BtnAddSweetDecafFlavor.Content = "Decaf";
+            }
         }
 
         /// <summary>
@@ -43,10 +119,14 @@ namespace PointOfSale
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void UxSodasaurus_Click(object sender, RoutedEventArgs e)
+        private void AddSodasaurus(object sender, RoutedEventArgs e)
         {
-            uxAddLemon.IsEnabled = false;
-            uxSweetDecafFlavor.IsEnabled = true;
+            flavor = true;
+            BtnAddSweetDecafFlavor.Content = "Flavor";
+            SelectDrink(new Sodasaurus());
+            BtnAddLemon.IsEnabled = false;
+            BtnAddSweetDecafFlavor.IsEnabled = true;
+            BtnHoldIce.Content = "Hold Ice";
         }
 
         /// <summary>
@@ -54,10 +134,14 @@ namespace PointOfSale
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void UxJurassicJava_Click(object sender, RoutedEventArgs e)
+        private void AddJurassicJava(object sender, RoutedEventArgs e)
         {
-            uxAddLemon.IsEnabled = false;
-            uxSweetDecafFlavor.IsEnabled = true;
+            flavor = false;
+            BtnAddSweetDecafFlavor.Content = "Decaf";
+            SelectDrink(new JurassicJava());
+            BtnAddLemon.IsEnabled = false;
+            BtnAddSweetDecafFlavor.IsEnabled = true;
+            BtnHoldIce.Content = "Add Ice";
         }
 
         /// <summary>
@@ -65,10 +149,14 @@ namespace PointOfSale
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void uxWater_Click(object sender, RoutedEventArgs e)
+        private void AddWater(object sender, RoutedEventArgs e)
         {
-            uxAddLemon.IsEnabled = true;
-            uxSweetDecafFlavor.IsEnabled = false;
+            flavor = false;
+            BtnAddSweetDecafFlavor.Content = "Add Lemon";
+            SelectDrink(new Water());
+            BtnAddLemon.IsEnabled = true;
+            BtnAddSweetDecafFlavor.IsEnabled = false;
+            BtnHoldIce.Content = "Hold Ice";
         }
 
         /// <summary>
@@ -76,10 +164,75 @@ namespace PointOfSale
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void UxTyrannotea_Click(object sender, RoutedEventArgs e)
+        private void AddTyrannotea(object sender, RoutedEventArgs e)
         {
-            uxAddLemon.IsEnabled = true;
-            uxSweetDecafFlavor.IsEnabled = true;
+            flavor = false;
+            BtnAddSweetDecafFlavor.Content = "Add Sugar";
+            SelectDrink(new Tyrannotea());
+            BtnAddLemon.IsEnabled = true;
+            BtnAddSweetDecafFlavor.IsEnabled = true;
+        }
+
+        /// <summary>
+        /// Event handler for the Add Lemon button.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void AddLemon(object sender, RoutedEventArgs e)
+        {
+            if (drink is Tyrannotea t) t.Lemon = true;
+            else if (drink is Water w) w.Lemon = true;
+        }
+
+        /// <summary>
+        /// Event handler for the Hold Ice button.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void HoldIce(object sender, RoutedEventArgs e)
+        {
+            if (drink is Drink) drink.HoldIce();
+            if (drink is JurassicJava j) j.Ice = true;
+        }
+
+        /// <summary>
+        /// Event handler for the Done button to navigate back to main page.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Done(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new MenuCategorySelection());
+        }
+
+        /// <summary>
+        /// Event handler for the Large button.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        protected void OnSelectLarge(object sender, RoutedEventArgs args)
+        {
+            SelectSize(DinoDiner.Menu.Size.Large);
+        }
+
+        /// <summary>
+        /// Event handler for the Medium button.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        protected void OnSelectMedium(object sender, RoutedEventArgs args)
+        {
+            SelectSize(DinoDiner.Menu.Size.Medium);
+        }
+
+        /// <summary>
+        /// Event handler for the Small button.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        protected void OnSelectSmall(object sender, RoutedEventArgs args)
+        {
+            SelectSize(DinoDiner.Menu.Size.Small);
         }
     }
 }

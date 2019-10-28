@@ -15,12 +15,12 @@
                 <Setter Property="Height" Value="110"/>
             </Style>
         </WrapPanel.Resources>
-        <Button x:Name="uxBrontowurst" Margin="10">Brontowurst</Button>
-        <Button x:Name="uxDinoNuggets" Margin="10">Dino-Nuggets</Button>
-        <Button x:Name="uxPrehistoricPBJ" Margin="10">Prehistoric PB&amp;j</Button>
-        <Button x:Name="uxPterodactylWings" Margin="10">Pterodactyl Wings</Button>
-        <Button x:Name="uxSteakosaurus" Margin="10">Steakosaurus Burger</Button>
-        <Button x:Name="uxTRexKing" Margin="10">T-Rex King Burger</Button>
-        <Button x:Name="uxVelociWrap">Veloci-Wrap</Button>
+        <Button Click="AddBrontowurst" Name="BtnAddBrontowurst" Margin="10">Brontowurst</Button>
+        <Button Click="AddDinoNuggets" Name="BtnAddDinoNuggets" Margin="10">Dino-Nuggets</Button>
+        <Button Click="AddPrehistoricPBJ" Name="BtnAddPrehistoricPBJ" Margin="10">Prehistoric PB&amp;j</Button>
+        <Button Click="AddPterodactylWings" Name="BtnAddPterodactylWings" Margin="10">Pterodactyl Wings</Button>
+        <Button Click="AddSteakosaurus" Name="BtnAddSteakosaurus" Margin="10">Steakosaurus Burger</Button>
+        <Button Click="AddTrexKingBurger" Name="BtnAddTrexKingBurger" Margin="10">T-Rex King Burger</Button>
+        <Button Click="AddVelociWrap" Name="BtnAddVelociWrap">Veloci-Wrap</Button>
     </WrapPanel>
 </Page>

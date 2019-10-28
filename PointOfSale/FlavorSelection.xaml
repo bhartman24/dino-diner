@@ -19,12 +19,12 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Button Margin="10" Grid.Row="0" Grid.Column="0">Cherry</Button>
-        <Button Margin="10" Grid.Row="1" Grid.Column="0">Lime</Button>
-        <Button Margin="10" Grid.Row="2" Grid.Column="0">Vanilla</Button>
-        <Button Margin="10" Grid.Row ="0" Grid.Column="1">Chocolate</Button>
-        <Button Margin="10" Grid.Row="1" Grid.Column="1">Orange</Button>
-        <Button Margin="10" Grid.Row="0" Grid.Column="2">Cola</Button>
-        <Button Margin="10" Grid.Row="1" Grid.Column="2">Root Beer</Button>
+        <Button Click="AddCherry" Margin="10" Grid.Row="0" Grid.Column="0">Cherry</Button>
+        <Button Click="AddLime" Margin="10" Grid.Row="1" Grid.Column="0">Lime</Button>
+        <Button Click="AddVanilla" Margin="10" Grid.Row="2" Grid.Column="0">Vanilla</Button>
+        <Button Click="AddChocolate" Margin="10" Grid.Row ="0" Grid.Column="1">Chocolate</Button>
+        <Button Click="AddOrange" Margin="10" Grid.Row="1" Grid.Column="1">Orange</Button>
+        <Button Click="AddCola" Margin="10" Grid.Row="0" Grid.Column="2">Cola</Button>
+        <Button Click="AddRootBeer" Margin="10" Grid.Row="1" Grid.Column="2">Root Beer</Button>
     </Grid>
 </Page>

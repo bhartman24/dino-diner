@@ -20,15 +20,16 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Button x:Name="uxSodasaurus" Margin="10" Grid.Row="0" Grid.Column="0" Click="UxSodasaurus_Click">Sodasaurus</Button>
-        <Button x:Name="uxTyrannotea" Margin="10" Grid.Row="1" Grid.Column="0" Click="UxTyrannotea_Click">Tyrannotea</Button>
-        <Button x:Name="uxJurassicJava" Margin="10" Grid.Row="2" Grid.Column="0" Click="UxJurassicJava_Click">Jurassic Java</Button>
-        <Button x:Name="uxWater" Margin="10" Grid.Row="3" Grid.Column="0" Click="uxWater_Click">Water</Button>
-        <Button Margin="10" Grid.Row ="0" Grid.Column="1">Small</Button>
-        <Button Margin="10" Grid.Row="1" Grid.Column="1">Medium</Button>
-        <Button Margin="10" Grid.Row="2" Grid.Column="1">Large</Button>
-        <Button x:Name="uxSweetDecafFlavor" Margin="10" Click="ChooseFlavor" Grid.Row="0" Grid.Column="2">Sweet/Decaf/Flavor</Button>
-        <Button x:Name="uxAddLemon" Margin="10" Grid.Row="1" Grid.Column="2">Add Lemon</Button>
-        <Button x:Name="uxHoldIce" Margin="10" Grid.Row="2" Grid.Column="2">Hold Ice</Button>
+        <Button Click="Done" FontSize="20" Grid.Row = "3" Grid.Column="3"  >Done</Button>
+        <Button FontSize="20" Name="BtnAddSodasaurus" Click="AddSodasaurus" Margin="10" Grid.Row="0" Grid.Column="0">Sodasaurus</Button>
+        <Button FontSize="20" Name="BtnAddTyrannotea" Margin="10" Grid.Row="1" Grid.Column="0" Click="AddTyrannotea">Tyrannotea</Button>
+        <Button FontSize="20" Name="BtnAddJurassicJava" Margin="10" Grid.Row="2" Grid.Column="0" Click="AddJurassicJava">Jurassic Java</Button>
+        <Button FontSize="20" Name="BtnAddWater" Margin="10" Grid.Row="3" Grid.Column="0" Click="AddWater">Water</Button>
+        <Button FontSize="20" Click="OnSelectSmall" Margin="10" Grid.Row ="0" Grid.Column="1">Small</Button>
+        <Button FontSize="20" Click="OnSelectMedium" Margin="10" Grid.Row="1" Grid.Column="1">Medium</Button>
+        <Button FontSize="20" Click="OnSelectLarge" Margin="10" Grid.Row="2" Grid.Column="1">Large</Button>
+        <Button FontSize="20" Name="BtnAddSweetDecafFlavor" Margin="10" Click="ChooseSweetDecafFlavor" Grid.Row="0" Grid.Column="2">Sweet/Decaf/Flavor</Button>
+        <Button FontSize="20" Click="AddLemon" Name="BtnAddLemon" Margin="10" Grid.Row="1" Grid.Column="2">Add Lemon</Button>
+        <Button FontSize="20" Click="HoldIce" Name="BtnHoldIce" Margin="10" Grid.Row="2" Grid.Column="2">Hold Ice</Button>
     </Grid>
 </Page>

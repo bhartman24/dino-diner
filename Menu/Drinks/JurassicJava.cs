@@ -53,9 +53,22 @@ namespace DinoDiner.Menu
         public bool SpaceForCream { get; set; } = false;
 
         /// <summary>
+        /// backing variable for the decaf.
+        /// </summary>
+        private bool decaf;
+
+        /// <summary>
         /// Gets and sets if customer wants coffee decaf.
         /// </summary>
-        public bool Decaf { get; set; } = false;
+        public bool Decaf
+        {
+            get { return decaf; }
+            set
+            {
+                decaf = value;
+                NotifyOfPropertyChange("Description");
+            }
+        }
 
         /// <summary>
         /// Method to leave room for cream in their coffee.
@@ -107,6 +120,8 @@ namespace DinoDiner.Menu
                         this.Calories = 2;
                         break;
                 }
+                NotifyOfPropertyChange("Description");
+                NotifyOfPropertyChange("Price");
             }
         }
 

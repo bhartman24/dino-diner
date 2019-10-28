@@ -19,12 +19,12 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Button Margin="10" Grid.Row="0" Grid.Column="0">Fryceritops</Button>
-        <Button Margin="10" Grid.Row="1" Grid.Column="0">Meteor Mac &amp; Cheese</Button>
-        <Button Margin="10" Grid.Row="2" Grid.Column="0">Mezzorella Sticks</Button>
-        <Button Margin="10" Grid.Row="3" Grid.Column="0">Triceritots</Button>
-        <Button Margin="10" Grid.Row="0" Grid.Column="1">Small</Button>
-        <Button Margin="10" Grid.Row="1" Grid.Column="1">Medium</Button>
-        <Button Margin="10" Grid.Row="2" Grid.Column="1">Large</Button>
+        <Button Name="BtnAddFryceritops" Click="AddFryceritops" Margin="10" Grid.Row="0" Grid.Column="0">Fryceritops</Button>
+        <Button Name="BtnAddMeteorMacAndCheese" Click="AddMeteorMacAndCheese" Margin="10" Grid.Row="1" Grid.Column="0">Meteor Mac &amp; Cheese</Button>
+        <Button Name="BtnAddMezzorellaSticks" Click="AddMezzorellaSticks" Margin="10" Grid.Row="2" Grid.Column="0">Mezzorella Sticks</Button>
+        <Button Name="BtnAddTriceritots" Click="AddTriceritots" Margin="10" Grid.Row="3" Grid.Column="0">Triceritots</Button>
+        <Button Name="BtnPickSmall" IsEnabled="False" Click="OnSelectSmall" Margin="10" Grid.Row="0"  Grid.Column="1">Small</Button>
+        <Button Name="BtnPickMedium" IsEnabled="False" Click="OnSelectMedium" Margin="10" Grid.Row="1" Grid.Column="1">Medium</Button>
+        <Button Name="BtnPickLarge" IsEnabled="False" Click="OnSelectLarge" Margin="10" Grid.Row="2" Grid.Column="1">Large</Button>
     </Grid>
 </Page>

@@ -46,9 +46,22 @@ namespace DinoDiner.Menu
         }
 
         /// <summary>
+        /// backing variable for the flavor.
+        /// </summary>
+        private SodasaurusFlavor flavor;
+
+        /// <summary>
         /// Property for the flavor.
         /// </summary>
-        public SodasaurusFlavor Flavor { get; set; }
+        public SodasaurusFlavor Flavor
+        {
+            get { return flavor; }
+            set
+            {
+                flavor = value;
+                NotifyOfPropertyChange("Description");
+            }
+        }
 
         /// <summary>
         /// Backing variable for the Size property.
@@ -82,6 +95,8 @@ namespace DinoDiner.Menu
                         this.Calories = 112;
                         break;
                 }
+                NotifyOfPropertyChange("Description");
+                NotifyOfPropertyChange("Price");
             }
         }
 

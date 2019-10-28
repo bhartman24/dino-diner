@@ -25,7 +25,7 @@ namespace DinoDiner.Menu
         /// <summary>
         /// Gets any special preparation instructions.
         /// </summary>
-        public string[] Special
+        public override string[] Special
         {
             get
             {
@@ -47,10 +47,19 @@ namespace DinoDiner.Menu
             Ice = true;
         }
 
+        private bool lemon;
+
         /// <summary>
         /// Property for the Lemon.
         /// </summary>
-        public bool Lemon { get; set; }
+        public bool Lemon
+        {
+            get { return lemon; }
+            set
+            {
+                lemon = value;
+            }
+        }
 
         /// <summary>
         /// Method to set the Lemon property to true.
@@ -90,10 +99,11 @@ namespace DinoDiner.Menu
                         this.Calories = 0;
                         break;
                     case Size.Small:
-                        Price = .1;
+                        Price = .10;
                         this.Calories = 0;
                         break;
                 }
+                NotifyOfPropertyChange("Description");
             }
         }
 

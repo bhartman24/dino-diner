@@ -47,16 +47,41 @@ namespace DinoDiner.Menu
             Lemon = false;
         }
 
+        /// <summary>
+        /// backing variable for sugar.
+        /// </summary>
+        private bool sweet;
 
         /// <summary>
         /// Property for the Sweetener.
         /// </summary>
-        public bool Sweet { get; set; }
+        public bool Sweet
+        {
+            get { return sweet; }
+            set
+            {
+                sweet = value;
+                NotifyOfPropertyChange("Description");
+            }
+        }
+
+        /// <summary>
+        /// backing variable for lemon.
+        /// </summary>
+        private bool lemon;
 
         /// <summary>
         /// Property for the Lemon.
         /// </summary>
-        public bool Lemon { get; set; }
+        public bool Lemon
+        {
+            get { return lemon; }
+            set
+            {
+                lemon = value;
+                NotifyOfPropertyChange("Special");
+            }
+        }
 
         /// <summary>
         /// Method to set the Lemon to true.
@@ -75,7 +100,6 @@ namespace DinoDiner.Menu
         {
             Sweet = true;
             this.Calories = 2 * Calories;
-            NotifyOfPropertyChange("Special");
             NotifyOfPropertyChange("Ingredients");
         }
 
@@ -101,16 +125,20 @@ namespace DinoDiner.Menu
                     case Size.Large:
                         Price = 1.99;
                         this.Calories = 32;
+
                         if (Sweet == true)
                         {
                             this.Calories = 64;
                         }
                         break;
                     case Size.Medium:
+                        
                         Price = 1.49;
                         this.Calories = 16;
                         break;
                 }
+                NotifyOfPropertyChange("Description");
+                NotifyOfPropertyChange("Price");
             }
         }
 
