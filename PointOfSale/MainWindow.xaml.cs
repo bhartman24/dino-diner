@@ -29,8 +29,6 @@ namespace PointOfSale
             InitializeComponent();
             OrderList.NavigationService = OrderInterface.NavigationService;
             Order order = (Order)DataContext;
-            order.Add(new Fryceritops());
-            order.Add(new Tyrannotea());
         }
 
         /// <summary>
@@ -51,6 +49,23 @@ namespace PointOfSale
         public void OnDataContextChanged(object sender, DependencyPropertyChangedEventArgs args)
         {
             SetFrameDataContext();
+        }
+
+        /// <summary>
+        /// Event handler for the done button to go back.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        private void OnDone(object sender, RoutedEventArgs args)
+        {
+            if (OrderInterface.NavigationService.CanGoBack)
+            {
+                OrderInterface.NavigationService.GoBack();
+            }
+            else
+            {
+                OrderInterface.NavigationService.Navigate(new MenuCategorySelection());
+            }
         }
 
         /// <summary>

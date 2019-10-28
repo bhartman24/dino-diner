@@ -75,6 +75,8 @@ namespace PointOfSale
             {
                 entree = new PrehistoricPBJ();
                 order.Add(entree);
+                PrehistoricPBJ pbj = new PrehistoricPBJ();
+                NavigationService.Navigate(new PrehistoricPBJCustomization(pbj));
             }
             NavigationService.Navigate(new MenuCategorySelection());
         }
@@ -122,6 +124,7 @@ namespace PointOfSale
                 order.Add(entree);
             }
             NavigationService.Navigate(new MenuCategorySelection());
+            
         }
 
         /// <summary>

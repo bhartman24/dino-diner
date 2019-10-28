@@ -152,7 +152,7 @@ namespace PointOfSale
         private void AddWater(object sender, RoutedEventArgs e)
         {
             flavor = false;
-            BtnAddSweetDecafFlavor.Content = "Add Lemon";
+            //BtnAddSweetDecafFlavor.Content = "Add Lemon";
             SelectDrink(new Water());
             BtnAddLemon.IsEnabled = true;
             BtnAddSweetDecafFlavor.IsEnabled = false;

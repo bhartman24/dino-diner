@@ -12,14 +12,14 @@ namespace DinoDiner.Menu
     public class Order : INotifyPropertyChanged
     {
         /// <summary>
-        /// An event handler for property changes.
+        /// An event handler for when an order property changes.
         /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
 
         /// <summary>
         /// backing variable for the Items.
         /// </summary>
-        private List<IOrderItem> items;
+        private List<IOrderItem> items = new List<IOrderItem>();
 
         /// <summary>
         /// Property that represents the items added to order.
@@ -92,10 +92,10 @@ namespace DinoDiner.Menu
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
-        private void OnCollectionChanged(object sender, EventArgs args)
+        protected void NotifyAllPropertiesChanged()
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Items"));
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SubtotalCost"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SubTotalCost"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SalesTaxCost"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TotalCost"));
         }
@@ -106,19 +106,33 @@ namespace DinoDiner.Menu
         /// <param name="item"></param>
         public void Add(IOrderItem item)
         {
-            item.PropertyChanged += OnCollectionChanged;
             items.Add(item);
-            OnCollectionChanged(this, new EventArgs());
+            item.PropertyChanged += OnPropertyChanged;
+            NotifyAllPropertiesChanged();
+        }
+
+        /// <summary>
+        /// Event handler 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        private void OnPropertyChanged(object sender, PropertyChangedEventArgs args)
+        {
+            NotifyAllPropertiesChanged();
         }
 
         /// <summary>
         /// Method to remove an item.
         /// </summary>
         /// <param name="item"></param>
-        public void Remove(IOrderItem item)
+        public bool Remove(IOrderItem item)
         {
-            items.Remove(item);
-            OnCollectionChanged(this, new EventArgs());
+            bool removed = items.Remove(item);
+            if (removed)
+            {
+                NotifyAllPropertiesChanged();
+            }
+            return removed;
         }
     }
 }

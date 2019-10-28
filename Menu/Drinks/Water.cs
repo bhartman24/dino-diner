@@ -47,6 +47,9 @@ namespace DinoDiner.Menu
             Ice = true;
         }
 
+        /// <summary>
+        /// backing variable for lemon.
+        /// </summary>
         private bool lemon;
 
         /// <summary>
@@ -58,6 +61,7 @@ namespace DinoDiner.Menu
             set
             {
                 lemon = value;
+                NotifyOfPropertyChange("Special");
             }
         }
 

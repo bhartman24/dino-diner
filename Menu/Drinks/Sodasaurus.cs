@@ -13,7 +13,6 @@ namespace DinoDiner.Menu
     /// </summary>
     public class Sodasaurus : Drink, IMenuItem, IOrderItem
     {
-
         /// <summary>
         /// Gets a description of this order item.
         /// </summary>
