@@ -18,6 +18,7 @@
                  Name="OrderItems"
                  ItemsSource="{Binding Path=Items, UpdateSourceTrigger=PropertyChanged}"
                  SelectionChanged="OnSelectionChanged"
+                 IsSynchronizedWithCurrentItem="False"
                  >
             <ListBox.ItemTemplate>
                 <DataTemplate>

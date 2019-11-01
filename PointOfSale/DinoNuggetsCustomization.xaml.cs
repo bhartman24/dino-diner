@@ -17,43 +17,45 @@ using DinoDiner.Menu;
 namespace PointOfSale
 {
     /// <summary>
-    /// Interaction logic for CustomizeCombo.xaml
+    /// Interaction logic for DinoNuggetsCustomization.xaml
     /// </summary>
-    public partial class CustomizeCombo : Page
+    public partial class DinoNuggetsCustomization : Page
     {
         /// <summary>
-        /// Method that implements the xaml page.
+        /// backing variable to create a new pbj object.
         /// </summary>
-        public CustomizeCombo()
+        private DinoNuggets dn;
+
+        public DinoNuggetsCustomization(DinoNuggets dn)
         {
             InitializeComponent();
+            this.dn = dn;
         }
 
         /// <summary>
-        /// Method that navigates to the SideSelection page.
+        /// Event handler for adding a nugget.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
-        private void SideClicked(object sender, RoutedEventArgs args)
+        private void OnAddNugget(object sender, RoutedEventArgs args)
         {
-            NavigationService.Navigate(new SideSelection());
+            dn.AddNugget();
         }
 
         /// <summary>
-        /// Method that navigates to the DrinkSelection page.
+        /// Event handler for the Done button to go back.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
-        private void DrinkClicked(object sender, RoutedEventArgs args)
+        private void OnDone(object sender, RoutedEventArgs args)
         {
-            NavigationService.Navigate(new DrinkSelection());
-        }
-
-        private void OnSizeClicked(object sender, RoutedEventArgs args)
-        {
-            if (DataContext is Order order)
-            {  
-                
+            if (NavigationService.CanGoBack)
+            {
+                NavigationService.GoBack();
+            }
+            else
+            {
+                NavigationService.Navigate(new MenuCategorySelection());
             }
         }
     }

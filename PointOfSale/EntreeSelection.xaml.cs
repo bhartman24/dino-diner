@@ -46,7 +46,7 @@ namespace PointOfSale
                 entree = new Brontowurst();
                 order.Add(entree);
             }
-            NavigationService.Navigate(new MenuCategorySelection());
+            NavigationService.Navigate(new BrontowurstCustomization(new Brontowurst()));
         }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace PointOfSale
                 entree = new DinoNuggets();
                 order.Add(entree);
             }
-            NavigationService.Navigate(new MenuCategorySelection());
+            NavigationService.Navigate(new DinoNuggetsCustomization(new DinoNuggets()));
         }
 
         /// <summary>
@@ -78,7 +78,7 @@ namespace PointOfSale
                 PrehistoricPBJ pbj = new PrehistoricPBJ();
                 NavigationService.Navigate(new PrehistoricPBJCustomization(pbj));
             }
-            NavigationService.Navigate(new MenuCategorySelection());
+            NavigationService.Navigate(new PrehistoricPBJCustomization(new PrehistoricPBJ()));
         }
 
         /// <summary>
@@ -93,7 +93,7 @@ namespace PointOfSale
                 entree = new PterodactylWings();
                 order.Add(entree);
             }
-            NavigationService.Navigate(new MenuCategorySelection());
+            NavigationService.Navigate(new PterodactylWingsCustomization(new PterodactylWings()));
         }
 
         /// <summary>
@@ -108,7 +108,7 @@ namespace PointOfSale
                 entree = new SteakosaurusBurger();
                 order.Add(entree);
             }
-            NavigationService.Navigate(new MenuCategorySelection());
+            NavigationService.Navigate(new SteakosaurusBurgerCustomization(new SteakosaurusBurger()));
         }
 
         /// <summary>
@@ -123,8 +123,8 @@ namespace PointOfSale
                 entree = new TRexKingBurger();
                 order.Add(entree);
             }
-            NavigationService.Navigate(new MenuCategorySelection());
-            
+            NavigationService.Navigate(new TRexKingBurgerCustomization(new TRexKingBurger()));
+
         }
 
         /// <summary>
@@ -139,7 +139,7 @@ namespace PointOfSale
                 entree = new VelociWrap();
                 order.Add(entree);
             }
-            NavigationService.Navigate(new MenuCategorySelection());
+            NavigationService.Navigate(new VelociWrapCustomization(new VelociWrap()));
         }
     }
 }
