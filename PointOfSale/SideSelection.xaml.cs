@@ -22,6 +22,21 @@ namespace PointOfSale
     public partial class SideSelection : Page
     {
         /// <summary>
+        /// boolean to see if we're implementing a combo.
+        /// </summary>
+        private bool isCombo;
+
+        /// <summary>
+        /// private backing variable for a combo.
+        /// </summary>
+        private CretaceousCombo combo;
+
+        /// <summary>
+        /// private backing variable for a side.
+        /// </summary>
+        private Side side;
+
+        /// <summary>
         /// Property for the Side.
         /// </summary>
         public Side Side { get; set; }
@@ -41,11 +56,22 @@ namespace PointOfSale
         public SideSelection(Side side)
         {
             InitializeComponent();
-            Side = side;
+            this.side = side;
             BtnPickSmall.IsEnabled = true;
             BtnPickMedium.IsEnabled = true;
             BtnPickLarge.IsEnabled = true;
             
+        }
+
+        /// <summary>
+        /// Constructor for dealing with a combo.
+        /// </summary>
+        /// <param name="combo"></param>
+        public SideSelection(CretaceousCombo combo)
+        {
+            InitializeComponent();
+            this.combo = combo;
+            isCombo = true;
         }
 
         /// <summary>
@@ -56,6 +82,10 @@ namespace PointOfSale
         {
             if(DataContext is Order order)
             {
+                if (isCombo)
+                {
+                    combo.Side = side;
+                }
                 order.Add(side);
                 this.Side = side;
             }
@@ -81,10 +111,23 @@ namespace PointOfSale
         /// <param name="args"></param>
         protected void AddFryceritops(object sender, RoutedEventArgs args)
         {
-            SelectSide(new Fryceritops());
-            BtnPickSmall.IsEnabled = true;
-            BtnPickMedium.IsEnabled = true;
-            BtnPickLarge.IsEnabled = true;
+            
+            if (DataContext is Order order)
+            {
+                side = new Fryceritops();
+                if (isCombo)
+                {
+                    combo.Side = side;
+                    NavigationService.GoBack();
+                }
+                else
+                {
+                    order.Add(side);
+                    BtnPickSmall.IsEnabled = true;
+                    BtnPickMedium.IsEnabled = true;
+                    BtnPickLarge.IsEnabled = true;
+                }
+            }
         }
 
         /// <summary>
@@ -94,10 +137,23 @@ namespace PointOfSale
         /// <param name="args"></param>
         protected void AddTriceritots(object sender, RoutedEventArgs args)
         {
-            SelectSide(new Triceritots());
-            BtnPickSmall.IsEnabled = true;
-            BtnPickMedium.IsEnabled = true;
-            BtnPickLarge.IsEnabled = true;
+            if (DataContext is Order order)
+            {
+                side = new Triceritots();
+                if (isCombo)
+                {
+                    combo.Side = side;
+                    NavigationService.GoBack();
+                }
+                else
+                {
+                    order.Add(side);
+                    BtnPickSmall.IsEnabled = true;
+                    BtnPickMedium.IsEnabled = true;
+                    BtnPickLarge.IsEnabled = true;
+                }
+
+            }
         }
 
         /// <summary>
@@ -107,10 +163,23 @@ namespace PointOfSale
         /// <param name="args"></param>
         protected void AddMeteorMacAndCheese(object sender, RoutedEventArgs args)
         {
-            SelectSide(new MeteorMacAndCheese());
-            BtnPickSmall.IsEnabled = true;
-            BtnPickMedium.IsEnabled = true;
-            BtnPickLarge.IsEnabled = true;
+            if (DataContext is Order order)
+            {
+                side = new MeteorMacAndCheese();
+                if (isCombo)
+                {
+                    combo.Side = side;
+                    NavigationService.GoBack();
+                }
+                else
+                {
+                    order.Add(side);
+                    BtnPickSmall.IsEnabled = true;
+                    BtnPickMedium.IsEnabled = true;
+                    BtnPickLarge.IsEnabled = true;
+                }
+
+            }
         }
 
         /// <summary>
@@ -120,10 +189,23 @@ namespace PointOfSale
         /// <param name="args"></param>
         protected void AddMezzorellaSticks(object sender, RoutedEventArgs args)
         {
-            SelectSide(new MezzorellaSticks());
-            BtnPickSmall.IsEnabled = true;
-            BtnPickMedium.IsEnabled = true;
-            BtnPickLarge.IsEnabled = true;
+            if (DataContext is Order order)
+            {
+                side = new MezzorellaSticks();
+                if (isCombo)
+                {
+                    combo.Side = side;
+                    NavigationService.GoBack();
+                }
+                else
+                {
+                    order.Add(side);
+                    BtnPickSmall.IsEnabled = true;
+                    BtnPickMedium.IsEnabled = true;
+                    BtnPickLarge.IsEnabled = true;
+                }
+
+            }
         }
 
         /// <summary>

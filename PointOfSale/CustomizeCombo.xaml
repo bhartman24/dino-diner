@@ -20,9 +20,9 @@
         </Grid.RowDefinitions>
         <Button Click="SideClicked" Margin="10,40,10,45" Grid.Row="0" Grid.Column="0">Friceritops</Button>
         <Button Click="DrinkClicked" Margin="10,40,10,45" Grid.Row="0" Grid.Column="2">Sodasaurus</Button>
-        <Button Click="OnSizeClick" Margin="10,40,0,20" Grid.Row="1" Grid.Column="0">SizeSmall</Button>
-        <Button Click="OnSizeClick" Margin="0,40,0,20" Grid.Row="1" Grid.Column="1">SizeMedium</Button>
-        <Button Click="OnSizeClick" Margin="0,40,10,20" Grid.Row="1" Grid.Column="2">SizeLarge</Button>
+        <Button Click="OnSizeSmall" Margin="10,40,0,20" Grid.Row="1" Grid.Column="0">SizeSmall</Button>
+        <Button Click="OnSizeMedium" Margin="0,40,0,20" Grid.Row="1" Grid.Column="1">SizeMedium</Button>
+        <Button Click="OnSizeLarge" Margin="0,40,10,20" Grid.Row="1" Grid.Column="2">SizeLarge</Button>
         <Label Content="Side" HorizontalAlignment="Left" Margin="69,10,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="-0.208,0.532"/>
         <Label Content="Drink" Grid.Column="2" HorizontalAlignment="Left" Margin="76.4,10,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="-0.055,0.399"/>
         <Label Content="Size" Grid.Column="1" HorizontalAlignment="Left" Margin="76.6,203,0,0" VerticalAlignment="Top" FontSize="16" Grid.RowSpan="2"/>

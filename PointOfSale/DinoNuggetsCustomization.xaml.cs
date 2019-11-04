@@ -22,14 +22,40 @@ namespace PointOfSale
     public partial class DinoNuggetsCustomization : Page
     {
         /// <summary>
+        /// private backing variable for the combo choice. 
+        /// </summary>
+        private CretaceousCombo combo;
+
+        /// <summary>
+        /// private backing variable to see if this entree is being implemented as a combo.
+        /// </summary>
+        private bool isCombo;
+
+        /// <summary>
         /// backing variable to create a new pbj object.
         /// </summary>
         private DinoNuggets dn;
 
+        /// <summary>
+        ///  Constructor for the DinoNuggets customization page.
+        /// </summary>
+        /// <param name="dn"></param>
         public DinoNuggetsCustomization(DinoNuggets dn)
         {
             InitializeComponent();
             this.dn = dn;
+            isCombo = false;
+        }
+
+        /// <summary>
+        /// Constructor to implement if the entree is in a combo.
+        /// </summary>
+        /// <param name="combo"></param>
+        public DinoNuggetsCustomization(CretaceousCombo combo)
+        {
+            InitializeComponent();
+            this.combo = combo;
+            isCombo = true;
         }
 
         /// <summary>
@@ -39,7 +65,12 @@ namespace PointOfSale
         /// <param name="args"></param>
         private void OnAddNugget(object sender, RoutedEventArgs args)
         {
-            dn.AddNugget();
+            if (isCombo)
+            {
+                if (combo.Entree is DinoNuggets dn) dn.AddNugget();
+            }
+            
+            else this.dn.AddNugget();
         }
 
         /// <summary>
@@ -49,14 +80,8 @@ namespace PointOfSale
         /// <param name="args"></param>
         private void OnDone(object sender, RoutedEventArgs args)
         {
-            if (NavigationService.CanGoBack)
-            {
-                NavigationService.GoBack();
-            }
-            else
-            {
-                NavigationService.Navigate(new MenuCategorySelection());
-            }
+            if (isCombo) NavigationService.Navigate(new CustomizeCombo(combo));
+            else NavigationService.Navigate(new MenuCategorySelection());
         }
     }
 }

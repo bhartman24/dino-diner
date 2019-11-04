@@ -16,44 +16,44 @@
             </Style>
         </WrapPanel.Resources>
         <Button x:Name="uxBrontowurstCombo" 
-            Click="ClickCombo">Brontowurst Combo
+            Click="OnBrontowurst">Brontowurst Combo
             <Button.Background>
                 <ImageBrush ImageSource ="Images/DinoDiner-01.png"/>
             </Button.Background>
         </Button>
         <Button x:Name="uxDinoNuggetsCombo" 
-            Click="ClickCombo">Dino-Nuggets
+            Click="OnDinoNuggets">Dino-Nuggets
             <Button.Background>
                 <ImageBrush ImageSource ="Images/DinoDiner-02.png"/>
             </Button.Background>
             
         </Button>
         <Button x:Name="uxPrehistoricPBJCombo" 
-            Click="ClickCombo">Prehistoric PB&amp;J Combo
+            Click="OnPrehistoricPBJ">Prehistoric PB&amp;J Combo
             <Button.Background>
                 <ImageBrush ImageSource ="Images/DinoDiner-03.png"/>
             </Button.Background>
         </Button>
         <Button x:Name="uxPterodactylWingsCombo" 
-            Click="ClickCombo">Pterodactyl Wings Combo
+            Click="OnPterodactylWings">Pterodactyl Wings Combo
             <Button.Background>
                 <ImageBrush ImageSource ="Images/DinoDiner-04.png"/>
             </Button.Background>
         </Button>
         <Button x:Name="uxSteakosaurusBurgerCombo" 
-            Click="ClickCombo">Steakosaurus Burger Combo
+            Click="OnSteakosaurusBurger">Steakosaurus Burger Combo
             <Button.Background>
                 <ImageBrush ImageSource ="Images/DinoDiner-05.png"/>
             </Button.Background>
         </Button>
         <Button x:Name="uxTRexKingBurgerCombo" 
-            Click="ClickCombo">T-Rex King Burger Combo
+            Click="OnTRexKingBurger">T-Rex King Burger Combo
             <Button.Background>
                 <ImageBrush ImageSource ="Images/DinoDiner-06.png"/>
             </Button.Background>
         </Button>
         <Button x:Name="uxVelociWrapCombo"
-            Click="ClickCombo">Veloci-Wrap Combo
+            Click="OnVelociWrap">Veloci-Wrap Combo
             <Button.Background>
                 <ImageBrush ImageSource ="Images/DinoDiner-07.png"/>
             </Button.Background>

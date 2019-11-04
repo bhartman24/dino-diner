@@ -22,11 +22,32 @@ namespace PointOfSale
     public partial class FlavorSelection : Page
     {
         /// <summary>
+        /// boolean to see if we're implementing a combo.
+        /// </summary>
+        private bool isCombo;
+
+        /// <summary>
         /// Method that implements the xaml page.
         /// </summary>
         public FlavorSelection()
         {
             InitializeComponent();
+        }
+
+        /// <summary>
+        /// private backing variable for a combo.
+        /// </summary>
+        private CretaceousCombo combo;
+
+        /// <summary>
+        /// Constructor for dealing with a combo.
+        /// </summary>
+        /// <param name="combo"></param>
+        public FlavorSelection(CretaceousCombo combo)
+        {
+            InitializeComponent();
+            this.combo = combo;
+            isCombo = true;
         }
 
         /// <summary>
@@ -36,14 +57,28 @@ namespace PointOfSale
         /// <param name="args"></param>
         protected void AddCherry(object sender, RoutedEventArgs args)
         {
-            if(sender is Button button && DataContext is Order order)
+            if (isCombo)
             {
-                if(order.Items[order.Items.Length-1] is Sodasaurus s)
+                if (sender is Button button && DataContext is Order order)
                 {
-                    s.Flavor = SodasaurusFlavor.Cherry;
+                    if (order.Items[order.Items.Length - 1] is CretaceousCombo combo)
+                    {
+                        if (combo.Drink is Sodasaurus s) s.Flavor = SodasaurusFlavor.Cherry;
+                    }
                 }
+                NavigationService.GoBack();
             }
-            NavigationService.GoBack();
+            else
+            {
+                if (sender is Button button && DataContext is Order order)
+                {
+                    if (order.Items[order.Items.Length - 1] is Sodasaurus s)
+                    {
+                        s.Flavor = SodasaurusFlavor.Cherry;
+                    }
+                }
+                NavigationService.GoBack();
+            }
         }
 
         /// <summary>
@@ -53,14 +88,28 @@ namespace PointOfSale
         /// <param name="args"></param>
         protected void AddLime(object sender, RoutedEventArgs args)
         {
-            if (sender is Button button && DataContext is Order order)
+            if (isCombo)
             {
-                if (order.Items[order.Items.Length - 1] is Sodasaurus s)
+                if (sender is Button button && DataContext is Order order)
                 {
-                    s.Flavor = SodasaurusFlavor.Lime;
+                    if (order.Items[order.Items.Length - 1] is CretaceousCombo combo)
+                    {
+                        if(combo.Drink is Sodasaurus s) s.Flavor = SodasaurusFlavor.Lime;
+                    }
                 }
+                NavigationService.GoBack();
             }
-            NavigationService.GoBack();
+            else
+            {
+                if (sender is Button button && DataContext is Order order)
+                {
+                    if (order.Items[order.Items.Length - 1] is Sodasaurus s)
+                    {
+                        s.Flavor = SodasaurusFlavor.Lime;
+                    }
+                }
+                NavigationService.GoBack();
+            }
         }
 
         /// <summary>
@@ -70,14 +119,28 @@ namespace PointOfSale
         /// <param name="args"></param>
         protected void AddVanilla(object sender, RoutedEventArgs args)
         {
-            if (sender is Button button && DataContext is Order order)
+            if (isCombo)
             {
-                if (order.Items[order.Items.Length - 1] is Sodasaurus s)
+                if (sender is Button button && DataContext is Order order)
                 {
-                    s.Flavor = SodasaurusFlavor.Vanilla;
+                    if (order.Items[order.Items.Length - 1] is CretaceousCombo combo)
+                    {
+                        if(combo.Drink is Sodasaurus s) s.Flavor = SodasaurusFlavor.Vanilla;
+                    }
                 }
+                NavigationService.GoBack();
             }
-            NavigationService.GoBack();
+            else
+            {
+                if (sender is Button button && DataContext is Order order)
+                {
+                    if (order.Items[order.Items.Length - 1] is Sodasaurus s)
+                    {
+                        s.Flavor = SodasaurusFlavor.Vanilla;
+                    }
+                }
+                NavigationService.GoBack();
+            }
         }
 
         /// <summary>
@@ -87,14 +150,28 @@ namespace PointOfSale
         /// <param name="args"></param>
         protected void AddChocolate(object sender, RoutedEventArgs args)
         {
-            if (sender is Button button && DataContext is Order order)
+            if (isCombo)
             {
-                if (order.Items[order.Items.Length - 1] is Sodasaurus s)
+                if (sender is Button button && DataContext is Order order)
                 {
-                    s.Flavor = SodasaurusFlavor.Chocolate;
+                    if (order.Items[order.Items.Length - 1] is CretaceousCombo combo)
+                    {
+                        if(combo.Drink is Sodasaurus s) s.Flavor = SodasaurusFlavor.Chocolate;
+                    }
                 }
+                NavigationService.GoBack();
             }
-            NavigationService.GoBack();
+            else
+            {
+                if (sender is Button button && DataContext is Order order)
+                {
+                    if (order.Items[order.Items.Length - 1] is Sodasaurus s)
+                    {
+                        s.Flavor = SodasaurusFlavor.Chocolate;
+                    }
+                }
+                NavigationService.GoBack();
+            }
         }
 
         /// <summary>
@@ -104,14 +181,28 @@ namespace PointOfSale
         /// <param name="args"></param>
         protected void AddOrange(object sender, RoutedEventArgs args)
         {
-            if (sender is Button button && DataContext is Order order)
+            if (isCombo)
             {
-                if (order.Items[order.Items.Length - 1] is Sodasaurus s)
+                if (sender is Button button && DataContext is Order order)
                 {
-                    s.Flavor = SodasaurusFlavor.Orange;
+                    if (order.Items[order.Items.Length - 1] is CretaceousCombo combo)
+                    {
+                        if(combo.Drink is Sodasaurus s) s.Flavor = SodasaurusFlavor.Orange;
+                    }
                 }
+                NavigationService.GoBack();
             }
-            NavigationService.GoBack();
+           else
+            {
+                if (sender is Button button && DataContext is Order order)
+                {
+                    if (order.Items[order.Items.Length - 1] is Sodasaurus s)
+                    {
+                        s.Flavor = SodasaurusFlavor.Orange;
+                    }
+                }
+                NavigationService.GoBack();
+            }
         }
 
         /// <summary>
@@ -121,14 +212,28 @@ namespace PointOfSale
         /// <param name="args"></param>
         protected void AddCola(object sender, RoutedEventArgs args)
         {
-            if (sender is Button button && DataContext is Order order)
+            if (isCombo)
             {
-                if (order.Items[order.Items.Length - 1] is Sodasaurus s)
+                if (sender is Button button && DataContext is Order order)
                 {
-                    s.Flavor = SodasaurusFlavor.Cola;
+                    if (order.Items[order.Items.Length - 1] is CretaceousCombo combo)
+                    {
+                        if(combo.Drink is Sodasaurus s) s.Flavor = SodasaurusFlavor.Cola;
+                    }
                 }
+                NavigationService.GoBack();
             }
-            NavigationService.GoBack();
+            else
+            {
+                if (sender is Button button && DataContext is Order order)
+                {
+                    if (order.Items[order.Items.Length - 1] is Sodasaurus s)
+                    {
+                        s.Flavor = SodasaurusFlavor.Cola;
+                    }
+                }
+                NavigationService.GoBack();
+            }
         }
 
         /// <summary>
@@ -138,14 +243,28 @@ namespace PointOfSale
         /// <param name="args"></param>
         protected void AddRootBeer(object sender, RoutedEventArgs args)
         {
-            if (sender is Button button && DataContext is Order order)
+            if (isCombo)
             {
-                if (order.Items[order.Items.Length - 1] is Sodasaurus s)
+                if (sender is Button button && DataContext is Order order)
                 {
-                    s.Flavor = SodasaurusFlavor.RootBeer;
+                    if (order.Items[order.Items.Length - 1] is CretaceousCombo combo)
+                    {
+                        if(combo.Drink is Sodasaurus s) s.Flavor = SodasaurusFlavor.RootBeer;
+                    }
                 }
+                NavigationService.GoBack();
             }
-            NavigationService.GoBack();
+            else
+            {
+                if (sender is Button button && DataContext is Order order)
+                {
+                    if (order.Items[order.Items.Length - 1] is Sodasaurus s)
+                    {
+                        s.Flavor = SodasaurusFlavor.RootBeer;
+                    }
+                }
+                NavigationService.GoBack();
+            }
         }
     }
 }

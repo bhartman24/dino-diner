@@ -22,14 +22,40 @@ namespace PointOfSale
     public partial class VelociWrapCustomization : Page
     {
         /// <summary>
+        /// private backing variable for the combo choice.
+        /// </summary>
+        private CretaceousCombo combo;
+
+        /// <summary>
+        /// private backing variable to see if this entree is being implemented as a combo.
+        /// </summary>
+        private bool isCombo;
+
+        /// <summary>
         /// backing variable to create a new vw object.
         /// </summary>
         private VelociWrap vw;
 
+        /// <summary>
+        ///  Constructor for the VelociWrap customization page.
+        /// </summary>
+        /// <param name="vw"></param>
         public VelociWrapCustomization(VelociWrap vw)
         {
             InitializeComponent();
             this.vw = vw;
+            isCombo = false;
+        }
+
+        /// <summary>
+        /// Constructor to implement if the entree is in a combo.
+        /// </summary>
+        /// <param name="combo"></param>
+        public VelociWrapCustomization(CretaceousCombo combo)
+        {
+            InitializeComponent();
+            this.combo = combo;
+            isCombo = true;
         }
 
         /// <summary>
@@ -39,7 +65,8 @@ namespace PointOfSale
         /// <param name="args"></param>
         private void OnHoldLettuce(object sender, RoutedEventArgs args)
         {
-            vw.HoldLettuce();
+            if (combo.Entree is VelociWrap vw) vw.HoldLettuce();
+            else this.vw.HoldLettuce();
         }
 
         /// <summary>
@@ -49,7 +76,8 @@ namespace PointOfSale
         /// <param name="args"></param>
         private void OnHoldDressing(object sender, RoutedEventArgs args)
         {
-            vw.HoldDressing();
+            if (combo.Entree is VelociWrap vw) vw.HoldDressing();
+            else this.vw.HoldDressing();
         }
 
         /// <summary>
@@ -59,7 +87,8 @@ namespace PointOfSale
         /// <param name="args"></param>
         private void OnHoldCheese(object sender, RoutedEventArgs args)
         {
-            vw.HoldCheese();
+            if (combo.Entree is VelociWrap vw) vw.HoldCheese();
+            else this.vw.HoldCheese();
         }
 
         /// <summary>
@@ -69,14 +98,8 @@ namespace PointOfSale
         /// <param name="args"></param>
         private void OnDone(object sender, RoutedEventArgs args)
         {
-            if (NavigationService.CanGoBack)
-            {
-                NavigationService.GoBack();
-            }
-            else
-            {
-                NavigationService.Navigate(new MenuCategorySelection());
-            }
+            if (isCombo) NavigationService.Navigate(new CustomizeCombo(combo));
+            else NavigationService.Navigate(new MenuCategorySelection());
         }
     }
 }

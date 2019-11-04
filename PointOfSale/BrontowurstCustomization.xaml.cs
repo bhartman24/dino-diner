@@ -22,9 +22,19 @@ namespace PointOfSale
     public partial class BrontowurstCustomization : Page
     {
         /// <summary>
+        /// private backing variable for the combo choice.
+        /// </summary>
+        private CretaceousCombo combo;
+
+        /// <summary>
         /// backing variable to create a new bw object.
         /// </summary>
         private Brontowurst bw;
+
+        /// <summary>
+        /// private backing variable to see if this entree is being implemented as a combo.
+        /// </summary>
+        private bool isCombo;
 
         /// <summary>
         /// Constructor for the Brontowurst customization page.
@@ -34,6 +44,18 @@ namespace PointOfSale
         {
             InitializeComponent();
             this.bw = bw;
+            isCombo = false;
+        }
+
+        /// <summary>
+        /// Constructor to implement if the entree is in a combo.
+        /// </summary>
+        /// <param name="combo"></param>
+        public BrontowurstCustomization(CretaceousCombo combo)
+        {
+            InitializeComponent();
+            this.combo = combo;
+            isCombo = true;
         }
 
 
@@ -44,7 +66,10 @@ namespace PointOfSale
         /// <param name="args"></param>
         private void OnHoldBun(object sender, RoutedEventArgs args)
         {
-            bw.HoldBun();
+            if (isCombo) {
+                if (combo.Entree is Brontowurst bw) bw.HoldBun();
+            }
+            else this.bw.HoldBun();
         }
 
         /// <summary>
@@ -54,7 +79,10 @@ namespace PointOfSale
         /// <param name="args"></param>
         private void OnHoldOnion(object sender, RoutedEventArgs args)
         {
-            bw.HoldOnion();
+            if (isCombo) {
+                if (combo.Entree is Brontowurst bw) bw.HoldOnion();
+            }
+            else this.bw.HoldOnion();
         }
 
         /// <summary>
@@ -64,7 +92,10 @@ namespace PointOfSale
         /// <param name="args"></param>
         private void OnHoldPeppers(object sender, RoutedEventArgs args)
         {
-            bw.HoldPeppers();
+            if (isCombo) {
+                if (combo.Entree is Brontowurst bw) bw.HoldPeppers();
+            }
+            else this.bw.HoldPeppers();
         }
 
         /// <summary>
@@ -74,14 +105,8 @@ namespace PointOfSale
         /// <param name="args"></param>
         private void OnDone(object sender, RoutedEventArgs args)
         {
-            if (NavigationService.CanGoBack)
-            {
-                NavigationService.GoBack();
-            }
-            else
-            {
-                NavigationService.Navigate(new MenuCategorySelection());
-            }
+            if (isCombo) NavigationService.Navigate(new CustomizeCombo(combo));
+            else NavigationService.Navigate(new MenuCategorySelection());
         }
     }
 }

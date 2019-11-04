@@ -13,7 +13,6 @@ namespace DinoDiner.Menu
     /// </summary>
     public class JurassicJava : Drink, IMenuItem, IOrderItem
     {
-
         /// <summary>
         /// Gets and sets the description.
         /// </summary>

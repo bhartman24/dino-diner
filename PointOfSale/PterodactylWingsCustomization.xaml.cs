@@ -22,14 +22,40 @@ namespace PointOfSale
     public partial class PterodactylWingsCustomization : Page
     {
         /// <summary>
+        /// private backing variable for the combo choice.
+        /// </summary>
+        private CretaceousCombo combo;
+
+        /// <summary>
+        /// private backing variable to see if this entree is being implemented as a combo.
+        /// </summary>
+        private bool isCombo;
+
+        /// <summary>
         /// backing variable to create a new wings object.
         /// </summary>
         private PterodactylWings wings;
 
+        /// <summary>
+        ///  Constructor for the PterodactylWings customization page.
+        /// </summary>
+        /// <param name="wings"></param>
         public PterodactylWingsCustomization(PterodactylWings wings)
         {
             InitializeComponent();
             this.wings = wings;
+            isCombo = false;
+        }
+
+        /// <summary>
+        /// Constructor to implement if the entree is in a combo.
+        /// </summary>
+        /// <param name="combo"></param>
+        public PterodactylWingsCustomization(CretaceousCombo combo)
+        {
+            InitializeComponent();
+            this.combo = combo;
+            isCombo = true;
         }
 
         /// <summary>
@@ -39,14 +65,8 @@ namespace PointOfSale
         /// <param name="args"></param>
         private void OnDone(object sender, RoutedEventArgs args)
         {
-            if (NavigationService.CanGoBack)
-            {
-                NavigationService.GoBack();
-            }
-            else
-            {
-                NavigationService.Navigate(new MenuCategorySelection());
-            }
+            if (isCombo) NavigationService.Navigate(new CustomizeCombo(combo));
+            else NavigationService.Navigate(new MenuCategorySelection());
         }
     }
 }

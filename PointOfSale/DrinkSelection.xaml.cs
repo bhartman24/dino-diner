@@ -22,6 +22,21 @@ namespace PointOfSale
     public partial class DrinkSelection : Page
     {
         /// <summary>
+        /// private boolean to see if we're implementing a combo.
+        /// </summary>
+        private bool isCombo;
+
+        /// <summary>
+        /// Private backing variable to set combo size.
+        /// </summary>
+        private DinoDiner.Menu.Size comboSize;
+
+        /// <summary>
+        /// private backing variable for a combo.
+        /// </summary>
+        private CretaceousCombo combo;
+
+        /// <summary>
         /// private backing variable for the Drink.
         /// </summary>
         private Drink drink;
@@ -57,26 +72,22 @@ namespace PointOfSale
         }
 
         /// <summary>
+        /// Constructor for the Drink Selection dealing with a combo
+        /// </summary>
+        /// <param name="combo"></param>
+        /// <param name="comboSize"></param>
+        public DrinkSelection(CretaceousCombo combo, DinoDiner.Menu.Size comboSize)
+        {
+            InitializeComponent();
+            this.combo = combo;
+            this.comboSize = comboSize;
+            isCombo = true;
+        }
+
+        /// <summary>
         /// private backing variable for the flavor.
         /// </summary>
         private bool flavor = false;
-
-        /// <summary>
-        /// Method to select a drink 
-        /// </summary>
-        /// <param name="drink"></param>
-        private void SelectDrink(Drink drink)
-        {
-            if(DataContext is Order order)
-            {
-                if(drink is Sodasaurus)
-                {
-                    flavor = true;
-                }
-                order.Add(drink);
-                this.drink = drink;
-            }
-        }
 
         /// <summary>
         /// Method to select the size for that drink.
@@ -84,11 +95,21 @@ namespace PointOfSale
         /// <param name="size"></param>
         private void SelectSize(DinoDiner.Menu.Size size)
         {
-            if (drink != null)
+            if (isCombo)
             {
-                this.drink.Size = size;
+                BtnSmall.IsEnabled = false;
+                BtnMedium.IsEnabled = false;
+                BtnLarge.IsEnabled = false;
             }
-
+            
+            else
+            {
+                if (drink != null)
+                {
+                    this.drink.Size = size;
+                    comboSize = this.drink.Size;
+                }
+            }
         }
 
         /// <summary>
@@ -98,20 +119,41 @@ namespace PointOfSale
         /// <param name="args"></param>
         private void ChooseSweetDecafFlavor(object sender, RoutedEventArgs args)
         {
-            if(flavor == true)
+            if (isCombo)
             {
-                NavigationService.Navigate(new FlavorSelection());
+                if (flavor == true)
+                {
+                    NavigationService.Navigate(new FlavorSelection(combo));
+                }
+                else if (drink is Tyrannotea t)
+                {
+                    t.Sweet = true;
+                    BtnAddSweetDecafFlavor.Content = "Add Sugar";
+                }
+                else if (drink is JurassicJava j)
+                {
+                    j.Decaf = true;
+                    BtnAddSweetDecafFlavor.Content = "Decaf";
+                }
             }
-            else if(drink is Tyrannotea t)
+            else
             {
-                t.Sweet = true;
-                BtnAddSweetDecafFlavor.Content = "Add Sugar";
+                if (flavor == true)
+                {
+                    NavigationService.Navigate(new FlavorSelection());
+                }
+                else if (drink is Tyrannotea t)
+                {
+                    t.Sweet = true;
+                    BtnAddSweetDecafFlavor.Content = "Add Sugar";
+                }
+                else if (drink is JurassicJava j)
+                {
+                    j.Decaf = true;
+                    BtnAddSweetDecafFlavor.Content = "Decaf";
+                }
             }
-            else if(drink is JurassicJava j)
-            {
-                j.Decaf = true;
-                BtnAddSweetDecafFlavor.Content = "Decaf";
-            }
+            
         }
 
         /// <summary>
@@ -121,12 +163,21 @@ namespace PointOfSale
         /// <param name="e"></param>
         private void AddSodasaurus(object sender, RoutedEventArgs e)
         {
-            flavor = true;
-            BtnAddSweetDecafFlavor.Content = "Flavor";
-            SelectDrink(new Sodasaurus());
-            BtnAddLemon.IsEnabled = false;
-            BtnAddSweetDecafFlavor.IsEnabled = true;
-            BtnHoldIce.Content = "Hold Ice";
+            if(DataContext is Order order)
+            {
+                flavor = true;
+                drink = new Sodasaurus();
+                if (isCombo) {
+                    combo.Drink = drink;
+                    combo.Size = comboSize;
+                } 
+                else order.Add(drink);
+                
+                BtnAddSweetDecafFlavor.Content = "Flavor";
+                BtnAddLemon.IsEnabled = false;
+                BtnAddSweetDecafFlavor.IsEnabled = true;
+                BtnHoldIce.Content = "Hold Ice";
+            }
         }
 
         /// <summary>
@@ -136,12 +187,21 @@ namespace PointOfSale
         /// <param name="e"></param>
         private void AddJurassicJava(object sender, RoutedEventArgs e)
         {
-            flavor = false;
-            BtnAddSweetDecafFlavor.Content = "Decaf";
-            SelectDrink(new JurassicJava());
-            BtnAddLemon.IsEnabled = false;
-            BtnAddSweetDecafFlavor.IsEnabled = true;
-            BtnHoldIce.Content = "Add Ice";
+            if(DataContext is Order order)
+            {
+                drink = new JurassicJava();
+                if (isCombo) {
+                    combo.Drink = drink;
+                    combo.Size = comboSize;
+                } 
+                else order.Add(drink);
+                flavor = false;
+                BtnAddSweetDecafFlavor.Content = "Decaf";
+                BtnAddLemon.IsEnabled = false;
+                BtnAddSweetDecafFlavor.IsEnabled = true;
+                BtnHoldIce.Content = "Add Ice";
+            }
+            
         }
 
         /// <summary>
@@ -151,12 +211,20 @@ namespace PointOfSale
         /// <param name="e"></param>
         private void AddWater(object sender, RoutedEventArgs e)
         {
-            flavor = false;
-            //BtnAddSweetDecafFlavor.Content = "Add Lemon";
-            SelectDrink(new Water());
-            BtnAddLemon.IsEnabled = true;
-            BtnAddSweetDecafFlavor.IsEnabled = false;
-            BtnHoldIce.Content = "Hold Ice";
+            if(DataContext is Order order)
+            {
+                drink = new Water();
+                if (isCombo) {
+                    combo.Drink = drink;
+                    combo.Size = comboSize;
+                } 
+                else order.Add(drink);
+                flavor = false;
+                BtnAddLemon.IsEnabled = true;
+                BtnAddSweetDecafFlavor.IsEnabled = false;
+                BtnHoldIce.Content = "Hold Ice";
+            }
+            
         }
 
         /// <summary>
@@ -166,11 +234,20 @@ namespace PointOfSale
         /// <param name="e"></param>
         private void AddTyrannotea(object sender, RoutedEventArgs e)
         {
-            flavor = false;
-            BtnAddSweetDecafFlavor.Content = "Add Sugar";
-            SelectDrink(new Tyrannotea());
-            BtnAddLemon.IsEnabled = true;
-            BtnAddSweetDecafFlavor.IsEnabled = true;
+            if(DataContext is Order order)
+            {
+                drink = new Tyrannotea();
+                if (isCombo) {
+                    combo.Drink = drink;
+                    combo.Size = comboSize;
+                } 
+                else order.Add(drink);
+                flavor = false;
+                BtnAddSweetDecafFlavor.Content = "Add Sugar";
+                BtnAddLemon.IsEnabled = true;
+                BtnAddSweetDecafFlavor.IsEnabled = true;
+            }
+            
         }
 
         /// <summary>
@@ -180,8 +257,16 @@ namespace PointOfSale
         /// <param name="e"></param>
         private void AddLemon(object sender, RoutedEventArgs e)
         {
-            if (drink is Tyrannotea t) t.Lemon = true;
-            else if (drink is Water w) w.Lemon = true;
+            if (isCombo)
+            {
+                if (drink is Tyrannotea t) t.Lemon = true;
+                else if (drink is Water w) w.Lemon = true;
+            }
+            else
+            {
+                if (drink is Tyrannotea t) t.Lemon = true;
+                else if (drink is Water w) w.Lemon = true;
+            }
         }
 
         /// <summary>
@@ -191,8 +276,16 @@ namespace PointOfSale
         /// <param name="e"></param>
         private void HoldIce(object sender, RoutedEventArgs e)
         {
-            if (drink is Drink) drink.HoldIce();
-            if (drink is JurassicJava j) j.Ice = true;
+            if (isCombo)
+            {
+                if (drink is Drink) drink.HoldIce();
+                if (drink is JurassicJava j) j.Ice = true;
+            }
+            else
+            {
+                if (drink is Drink) drink.HoldIce();
+                if (drink is JurassicJava j) j.Ice = true;
+            }
         }
 
         /// <summary>
@@ -202,7 +295,8 @@ namespace PointOfSale
         /// <param name="e"></param>
         private void Done(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new MenuCategorySelection());
+            if (isCombo) NavigationService.Navigate(new CustomizeCombo(combo));
+            else NavigationService.Navigate(new MenuCategorySelection());
         }
 
         /// <summary>

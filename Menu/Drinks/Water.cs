@@ -13,7 +13,6 @@ namespace DinoDiner.Menu
     /// </summary>
     public class Water : Drink, IMenuItem, IOrderItem
     {
-
         /// <summary>
         /// Gets and sets the description.
         /// </summary>
@@ -108,6 +107,7 @@ namespace DinoDiner.Menu
                         break;
                 }
                 NotifyOfPropertyChange("Description");
+                NotifyOfPropertyChange("Price");
             }
         }
 

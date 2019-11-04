@@ -58,14 +58,7 @@ namespace PointOfSale
         /// <param name="args"></param>
         private void OnDone(object sender, RoutedEventArgs args)
         {
-            if (OrderInterface.NavigationService.CanGoBack)
-            {
-                OrderInterface.NavigationService.GoBack();
-            }
-            else
-            {
-                OrderInterface.NavigationService.Navigate(new MenuCategorySelection());
-            }
+            OrderInterface.NavigationService.Navigate(new MenuCategorySelection());
         }
 
         /// <summary>

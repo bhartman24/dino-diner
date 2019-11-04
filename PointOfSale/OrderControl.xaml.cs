@@ -50,10 +50,16 @@ namespace PointOfSale
                 NavigationService?.Navigate(new DrinkSelection(drink));
                 OrderItems.SelectedItem = drink;
             }
-            else if(OrderItems.SelectedItem is Entree entree)
+            else if(OrderItems.SelectedItem is CretaceousCombo combo)
             {
-                OrderItems.SelectedItem = entree;
-                NavigationService?.Navigate(new MenuCategorySelection());
+                if (combo.Entree is Brontowurst) NavigationService.Navigate(new BrontowurstCustomization(combo));
+                else if (combo.Entree is DinoNuggets) NavigationService.Navigate(new DinoNuggetsCustomization(combo));
+                else if (combo.Entree is PrehistoricPBJ) NavigationService.Navigate(new PrehistoricPBJCustomization(combo));
+                else if (combo.Entree is PterodactylWings) NavigationService.Navigate(new PterodactylWingsCustomization(combo));
+                else if (combo.Entree is SteakosaurusBurger) NavigationService.Navigate(new SteakosaurusBurgerCustomization(combo));
+                else if (combo.Entree is TRexKingBurger) NavigationService.Navigate(new TRexKingBurgerCustomization(combo));
+                else if (combo.Entree is VelociWrap) NavigationService.Navigate(new VelociWrapCustomization(combo));
+                NavigationService?.Navigate(new CustomizeCombo(combo));
             }
         }
 

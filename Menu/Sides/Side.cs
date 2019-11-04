@@ -8,6 +8,9 @@ using System.ComponentModel;
 
 namespace DinoDiner.Menu
 {
+    /// <summary>
+    /// Abstract class for the side 
+    /// </summary>
     public abstract class Side : IMenuItem, IOrderItem, INotifyPropertyChanged
     {
         /// <summary>

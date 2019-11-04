@@ -25,9 +25,9 @@
         <Button FontSize="20" Name="BtnAddTyrannotea" Margin="10" Grid.Row="1" Grid.Column="0" Click="AddTyrannotea">Tyrannotea</Button>
         <Button FontSize="20" Name="BtnAddJurassicJava" Margin="10" Grid.Row="2" Grid.Column="0" Click="AddJurassicJava">Jurassic Java</Button>
         <Button FontSize="20" Name="BtnAddWater" Margin="10" Grid.Row="3" Grid.Column="0" Click="AddWater">Water</Button>
-        <Button FontSize="20" Click="OnSelectSmall" Margin="10" Grid.Row ="0" Grid.Column="1">Small</Button>
-        <Button FontSize="20" Click="OnSelectMedium" Margin="10" Grid.Row="1" Grid.Column="1">Medium</Button>
-        <Button FontSize="20" Click="OnSelectLarge" Margin="10" Grid.Row="2" Grid.Column="1">Large</Button>
+        <Button FontSize="20" Name="BtnSmall" Click="OnSelectSmall" Margin="10" Grid.Row ="0" Grid.Column="1">Small</Button>
+        <Button FontSize="20" Name="BtnMedium" Click="OnSelectMedium" Margin="10" Grid.Row="1" Grid.Column="1">Medium</Button>
+        <Button FontSize="20" Name="BtnLarge" Click="OnSelectLarge" Margin="10" Grid.Row="2" Grid.Column="1">Large</Button>
         <Button FontSize="20" Name="BtnAddSweetDecafFlavor" Margin="10" Click="ChooseSweetDecafFlavor" Grid.Row="0" Grid.Column="2">Sweet/Decaf/Flavor</Button>
         <Button FontSize="20" Click="AddLemon" Name="BtnAddLemon" Margin="10" Grid.Row="1" Grid.Column="2">Add Lemon</Button>
         <Button FontSize="20" Click="HoldIce" Name="BtnHoldIce" Margin="10" Grid.Row="2" Grid.Column="2">Hold Ice</Button>

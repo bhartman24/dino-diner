@@ -22,11 +22,22 @@ namespace PointOfSale
     public partial class CustomizeCombo : Page
     {
         /// <summary>
+        /// private backing variable for the combo.
+        /// </summary>
+        private CretaceousCombo combo;
+
+        /// <summary>
+        /// private backing variable to initialize the size
+        /// </summary>
+        private DinoDiner.Menu.Size comboSize = DinoDiner.Menu.Size.Small;
+
+        /// <summary>
         /// Method that implements the xaml page.
         /// </summary>
-        public CustomizeCombo()
+        public CustomizeCombo(CretaceousCombo combo)
         {
             InitializeComponent();
+            this.combo = combo;
         }
 
         /// <summary>
@@ -36,7 +47,7 @@ namespace PointOfSale
         /// <param name="args"></param>
         private void SideClicked(object sender, RoutedEventArgs args)
         {
-            NavigationService.Navigate(new SideSelection());
+            NavigationService.Navigate(new SideSelection(combo));
         }
 
         /// <summary>
@@ -46,15 +57,37 @@ namespace PointOfSale
         /// <param name="args"></param>
         private void DrinkClicked(object sender, RoutedEventArgs args)
         {
-            NavigationService.Navigate(new DrinkSelection());
+            NavigationService.Navigate(new DrinkSelection(combo, comboSize));
         }
 
-        private void OnSizeClicked(object sender, RoutedEventArgs args)
+        /// <summary>
+        /// Event handler for the Size small button.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        private void OnSizeSmall(object sender, RoutedEventArgs args)
         {
-            if (DataContext is Order order)
-            {  
-                
-            }
+            combo.Size = DinoDiner.Menu.Size.Small;
+        }
+
+        /// <summary>
+        /// Event handler for the size medium button.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        private void OnSizeMedium(object sender, RoutedEventArgs args)
+        {
+            combo.Size = DinoDiner.Menu.Size.Medium;
+        }
+
+        /// <summary>
+        /// Event handler for the size large button.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        private void OnSizeLarge(object sender, RoutedEventArgs args)
+        {
+            combo.Size = DinoDiner.Menu.Size.Large;
         }
     }
 }
