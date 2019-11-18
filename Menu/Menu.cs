@@ -20,17 +20,9 @@ namespace DinoDiner.Menu
             get
             {
                 List<IMenuItem> items = new List<IMenuItem>();
-                items.Add(new Brontowurst());
-                items.Add(new DinoNuggets());
-                items.Add(new PrehistoricPBJ());
-                items.Add(new PterodactylWings());
-                items.Add(new SteakosaurusBurger());
-                items.Add(new TRexKingBurger());
-                items.Add(new VelociWrap());
-                items.Add(new Fryceritops());
-                items.Add(new MeteorMacAndCheese());
-                items.Add(new MezzorellaSticks());
-                items.Add(new Triceritots());
+                items.AddRange(AvailableEntrees);
+                items.AddRange(AvailableDrinks);
+                items.AddRange(AvailableSides);
                 return items;
             }
         }
@@ -43,6 +35,13 @@ namespace DinoDiner.Menu
             get
             {
                 List<Entree> entree = new List<Entree>();
+                entree.Add(new Brontowurst());
+                entree.Add(new DinoNuggets());
+                entree.Add(new PrehistoricPBJ());
+                entree.Add(new PterodactylWings());
+                entree.Add(new SteakosaurusBurger());
+                entree.Add(new TRexKingBurger());
+                entree.Add(new VelociWrap());
                 return entree;
             }
         }
@@ -55,6 +54,10 @@ namespace DinoDiner.Menu
             get
             {
                 List<Side> side = new List<Side>();
+                side.Add(new Fryceritops());
+                side.Add(new MeteorMacAndCheese());
+                side.Add(new MezzorellaSticks());
+                side.Add(new Triceritots());
                 return side;
             }
         }
@@ -67,6 +70,10 @@ namespace DinoDiner.Menu
             get
             {
                 List<Drink> drink = new List<Drink>();
+                drink.Add(new JurassicJava());
+                drink.Add(new Sodasaurus());
+                drink.Add(new Water());
+                drink.Add(new Tyrannotea());
                 return drink;
             }
         }
@@ -74,7 +81,21 @@ namespace DinoDiner.Menu
         /// <summary>
         /// Property to return the available combos.
         /// </summary>
-        public List<CretaceousCombo> AvailableCombos { get; }
+        public List<CretaceousCombo> AvailableCombos
+        {
+            get
+            {
+                List<CretaceousCombo> availableCombos = new List<CretaceousCombo>();
+                availableCombos.Add(new CretaceousCombo(new Brontowurst()));
+                availableCombos.Add(new CretaceousCombo(new DinoNuggets()));
+                availableCombos.Add(new CretaceousCombo(new PrehistoricPBJ()));
+                availableCombos.Add(new CretaceousCombo(new PterodactylWings()));
+                availableCombos.Add(new CretaceousCombo(new SteakosaurusBurger()));
+                availableCombos.Add(new CretaceousCombo(new VelociWrap()));
+                availableCombos.Add(new CretaceousCombo(new TRexKingBurger()));
+                return availableCombos;
+            }
+        }
 
 
         /// <summary>

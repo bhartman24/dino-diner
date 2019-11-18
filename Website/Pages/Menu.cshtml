@@ -1,0 +1,76 @@
+﻿@page
+@model Website.Pages.MenuModel
+@{
+    ViewData["Title"] = "Menu";
+}
+<!DOCTYPE html>
+<html>
+<body>
+    <h1>Menu</h1>
+    <h2>Combos</h2>
+        @foreach (var item in Model.Menu.AvailableCombos)
+        {
+        <div class="menu-item">
+            <p>@item</p>
+            <p>@item.Entree</p>
+            <p>@item.Side</p>
+            <p>@item.Drink</p>
+            <p>Price: $@item.Price</p>
+            <p>Calories: @item.Calories</p>
+            <p>Ingredients: </p>
+            <div>
+                @foreach (var ingredients in item.Ingredients)
+                {
+                    <p>@ingredients</p>
+                }
+            </div>
+         </div>
+        }
+
+    <h2>Entrees</h2>
+    @foreach (var item in Model.Menu.AvailableEntrees)
+    {
+        <div class="menu-item">
+            <p>@item.ToString()</p>
+            <p>Price: $@item.Price</p>
+            <p>Calories: @item.Calories</p>
+            <p>Ingredients: </p>
+            @foreach (var ingredients in item.Ingredients)
+            {
+                <ul>@ingredients</ul>
+            }
+        </div>
+    }
+    <h2>Sides</h2>
+    @foreach (var item in Model.Menu.AvailableSides)
+    {
+        <div class="menu-item">
+            <p>@item.ToString()</p>
+            <p>Price: $@item.Price</p>
+            <p>Calories: @item.Calories</p>
+            <p>Ingredients: </p>
+            @foreach (var ingredients in item.Ingredients)
+            {
+                <ul>@ingredients</ul>
+            }
+        </div>
+    }
+    <h2>Drinks</h2>
+    @foreach (var item in Model.Menu.AvailableDrinks)
+    {
+        <div class="menu-item">
+            <p>@item.ToString()</p>
+            <p>Price: $@item.Price</p>
+            <p>Calories: @item.Calories</p>
+            <p>Ingredients: </p>
+            @foreach (var ingredients in item.Ingredients)
+            {
+                <ul>@ingredients</ul>
+            }
+        </div>
+    }
+</body>
+</html>
+
+
+

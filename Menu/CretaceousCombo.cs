@@ -85,6 +85,7 @@ namespace DinoDiner.Menu
                 NotifyOfPropertyChange("Ingredients");
                 NotifyOfPropertyChange("Special");
                 NotifyOfPropertyChange("Price");
+                NotifyOfPropertyChange("Description");
             }
         }
 
@@ -156,6 +157,10 @@ namespace DinoDiner.Menu
             this.Entree = entree;
             this.Side = new Fryceritops();
             this.Drink = new Sodasaurus();
+            NotifyOfPropertyChange("Description");
+            NotifyOfPropertyChange("Size");
+            NotifyOfPropertyChange("Price");
+            NotifyOfPropertyChange("Special");
         }
 
 

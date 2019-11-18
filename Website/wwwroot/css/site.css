@@ -12,3 +12,7 @@ body {
     padding-right: 15px;
 }
 
+.menu-item{
+    width: 500px;
+    border: 1px solid black;
+}
