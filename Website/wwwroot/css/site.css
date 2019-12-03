@@ -13,6 +13,35 @@ body {
 }
 
 .menu-item{
-    width: 500px;
+    width: 300px;
     border: 1px solid black;
+}
+
+.content{
+    display:flex;
+    flex-direction: row;
+}
+
+
+form{
+    width: 300px;
+    background-color: lightgray;
+    padding: 50px;
+    flex-direction: column;
+    float: left;
+}
+
+#menu {
+    display: flex;
+    flex-direction: column;
+}
+
+.exclude-ingredient {
+    display: flex;
+    flex-direction: column;
+}
+
+.price{
+    display: flex;
+    flex-direction: column;
 }
