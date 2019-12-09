@@ -157,6 +157,7 @@ namespace DinoDiner.Menu
             this.Entree = entree;
             this.Side = new Fryceritops();
             this.Drink = new Sodasaurus();
+            Category = "Combo";
             NotifyOfPropertyChange("Description");
             NotifyOfPropertyChange("Size");
             NotifyOfPropertyChange("Price");
@@ -197,5 +198,10 @@ namespace DinoDiner.Menu
                 return ingredients.ToArray();
             }
         }
+
+        /// <summary>
+        /// Property to get the category of your item.
+        /// </summary>
+        public string Category { get; set; }
     }
 }

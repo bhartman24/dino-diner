@@ -76,6 +76,7 @@ namespace DinoDiner.Menu
         {
             this.Price = 0.99;
             this.Calories = 352;
+            Category = "Side";
         }
 
         /// <summary>
@@ -95,7 +96,7 @@ namespace DinoDiner.Menu
         /// <returns></returns>
         public override string ToString()
         {
-            return size + " Triceritots";
+            return " Triceritots";
         }
     }
 }

@@ -44,6 +44,7 @@ namespace DinoDiner.Menu
             Ice = false;
             Price = 0.59;
             this.Calories = 2;
+            Category = "Drink";
         }
 
         /// <summary>
@@ -145,7 +146,7 @@ namespace DinoDiner.Menu
             {
                 return size + " Decaf Jurassic Java";
             }
-            else return size + " Jurassic Java";
+            else return " Jurassic Java";
         }
     }
 }

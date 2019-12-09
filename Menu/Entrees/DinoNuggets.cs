@@ -50,6 +50,7 @@ namespace DinoDiner.Menu
         {
             this.Price = 4.25;
             this.Calories = (uint)(59*nuggetCount);
+            Category = "Entree";
         }
 
         /// <summary>

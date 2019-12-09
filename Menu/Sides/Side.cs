@@ -81,5 +81,9 @@ namespace DinoDiner.Menu
             return base.ToString();
         }
 
+        /// <summary>
+        /// Property to get the category of your item.
+        /// </summary>
+        public string Category { get; set; }
     }
 }

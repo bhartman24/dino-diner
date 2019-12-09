@@ -11,20 +11,20 @@ namespace DinoDiner.Menu
     /// <summary>
     /// Class that lists all available menu items and subclasses.
     /// </summary>
-    public class Menu
+    public static class Menu
     {
         /// <summary>
         /// backing variables for the entree, combo, side, and drink
         /// </summary>
-        public List<Entree> availableEntrees;
-        public List<Side> availableSides;
-        public List<Drink> availableDrinks;
-        public List<CretaceousCombo> availableCombos;
+        public static List<IMenuItem> availableEntrees;
+        public static List<IMenuItem> availableSides;
+        public static List<IMenuItem> availableDrinks;
+        public static List<IMenuItem> availableCombos;
 
         /// <summary>
         /// Property to return all of the available menu items.
         /// </summary>
-        public List<IMenuItem> AvailableMenuItems
+        public static List<IMenuItem> AvailableMenuItems
         {
             get
             {
@@ -40,13 +40,13 @@ namespace DinoDiner.Menu
         /// <summary>
         /// Property to return the available entrees.
         /// </summary>
-        public List<Entree> AvailableEntrees
+        public static List<IMenuItem> AvailableEntrees
         {
             get
             {
                 if(availableEntrees == null)
                 {
-                    availableEntrees = new List<Entree>();
+                    availableEntrees = new List<IMenuItem>();
                     availableEntrees.Add(new Brontowurst());
                     availableEntrees.Add(new DinoNuggets());
                     availableEntrees.Add(new PrehistoricPBJ());
@@ -58,22 +58,18 @@ namespace DinoDiner.Menu
                 
                 return availableEntrees;
             }
-            set
-            {
-                this.availableEntrees = value;
-            }
         }
 
         /// <summary>
         /// Property to return the available sides.
         /// </summary>
-        public List<Side> AvailableSides
+        public static List<IMenuItem> AvailableSides
         {
             get
             {
                 if(availableSides == null)
                 {
-                    availableSides = new List<Side>();
+                    availableSides = new List<IMenuItem>();
                     availableSides.Add(new Fryceritops());
                     availableSides.Add(new MeteorMacAndCheese());
                     availableSides.Add(new MezzorellaSticks());
@@ -82,22 +78,18 @@ namespace DinoDiner.Menu
                 
                 return availableSides;
             }
-            set
-            {
-                this.availableSides = value;
-            }
         }
 
         /// <summary>
         /// Property to return the available drinks.
         /// </summary>
-        public List<Drink> AvailableDrinks
+        public static List<IMenuItem> AvailableDrinks
         {
             get
             {
                 if(availableDrinks == null)
                 {
-                    availableDrinks = new List<Drink>();
+                    availableDrinks = new List<IMenuItem>();
                     availableDrinks.Add(new JurassicJava());
                     availableDrinks.Add(new Sodasaurus());
                     availableDrinks.Add(new Water());
@@ -106,22 +98,18 @@ namespace DinoDiner.Menu
                 
                 return availableDrinks;
             }
-            set
-            {
-                this.availableDrinks = value;
-            }
         }
 
         /// <summary>
         /// Property to return the available combos.
         /// </summary>
-        public List<CretaceousCombo> AvailableCombos
+        public static List<IMenuItem> AvailableCombos
         {
             get
             {
                 if(availableCombos == null)
                 {
-                    availableCombos = new List<CretaceousCombo>();
+                    availableCombos = new List<IMenuItem>();
                     availableCombos.Add(new CretaceousCombo(new Brontowurst()));
                     availableCombos.Add(new CretaceousCombo(new DinoNuggets()));
                     availableCombos.Add(new CretaceousCombo(new PrehistoricPBJ()));
@@ -133,33 +121,12 @@ namespace DinoDiner.Menu
                 
                 return availableCombos;
             }
-            set
-            {
-                this.availableCombos = value;
-            }
-        }
-
-
-        /// <summary>
-        /// Method to override ToString() to return name of item.
-        /// </summary>
-        /// <returns></returns>
-        public override string ToString()
-        {
-            List<IMenuItem> menu = new List<IMenuItem>();
-            List<string> menuList = new List<string>();
-            foreach(IMenuItem item in menu)
-            {
-                menuList.Add(item.ToString());
-                menuList.Add("\n");
-            }
-            return menuList.ToString();
         }
 
         /// <summary>
         /// Method to return all AvailableMenuItems
         /// </summary>
-        public List<IMenuItem> All { get{ return AvailableMenuItems;  } }
+        public static List<IMenuItem> All { get{ return AvailableMenuItems;  } }
 
         /// <summary>
         /// Method to return the results after searching for a word
@@ -167,39 +134,13 @@ namespace DinoDiner.Menu
         /// <param name="items"></param>
         /// <param name="searchString"></param>
         /// <returns></returns>
-        public List<IMenuItem> Search(List<IMenuItem> items, string searchString)
+        public static List<IMenuItem> Search(List<IMenuItem> items, string searchString)
         {
-
             List<IMenuItem> results = new List<IMenuItem>();
             foreach (IMenuItem item in items)
             {
-                if(item is Entree e)
-                {
-                    if (item.ToString().Contains(searchString))
-                    {
-                        results.Add(e);
-                    }
-                }
-                if (item is CretaceousCombo c)
-                {
-                    if (item.ToString().Contains(searchString))
-                    {
-                        results.Add(c);
-                    }
-                }
-                if (item is Drink d)
-                {
-                    if (item.ToString().Contains(searchString))
-                    {
-                        results.Add(d);
-                    }
-                }
-                if (item is Side s)
-                {
-                    if (item.ToString().Contains(searchString))
-                    {
-                        results.Add(s);
-                    }
+                if (item.ToString().Contains(searchString)) {
+                    results.Add(item);
                 }
             }
             return results;
@@ -211,38 +152,14 @@ namespace DinoDiner.Menu
         /// <param name="items"></param>
         /// <param name="menuCategory"></param>
         /// <returns></returns>
-        public List<IMenuItem> FilterByCategory(List<IMenuItem> items, List<string> menuCategory)
+        public static List<IMenuItem> FilterByCategory(List<IMenuItem> items, List<string> menuCategory)
         {
             List<IMenuItem> results = new List<IMenuItem>();
             foreach (IMenuItem item in items)
             {
-                if (menuCategory.Contains("Combo"))
+                if (menuCategory.Contains(item.Category))
                 {
-                    if(item is CretaceousCombo c)
-                    {
-                        results.Add(c);
-                    }
-                }
-                if (menuCategory.Contains("Entree"))
-                {
-                    if (item is Entree e)
-                    {
-                        results.Add(e);
-                    }
-                }
-                 if (menuCategory.Contains("Drink"))
-                {
-                    if (item is Drink d)
-                    {
-                        results.Add(d);
-                    }
-                }
-                 if (menuCategory.Contains("Side"))
-                {
-                    if (item is Side s)
-                    {
-                        results.Add(s);
-                    }
+                    results.Add(item);
                 }
             }
             return results;
@@ -254,7 +171,7 @@ namespace DinoDiner.Menu
         /// <param name="items"></param>
         /// <param name="minimumPrice"></param>
         /// <returns></returns>
-        public List<IMenuItem> FilterByMinPrice(List<IMenuItem> items, float minimumPrice)
+        public static List<IMenuItem> FilterByMinPrice(List<IMenuItem> items, float minimumPrice)
         {
             List<IMenuItem> results = new List<IMenuItem>();
             foreach (IMenuItem item in items)
@@ -273,7 +190,7 @@ namespace DinoDiner.Menu
         /// <param name="items"></param>
         /// <param name="maximumPrice"></param>
         /// <returns></returns>
-        public List<IMenuItem> FilterByMaxPrice(List<IMenuItem> items, float maximumPrice)
+        public static List<IMenuItem> FilterByMaxPrice(List<IMenuItem> items, float maximumPrice)
         {
             List<IMenuItem> results = new List<IMenuItem>();
             foreach (IMenuItem item in items)
@@ -289,13 +206,12 @@ namespace DinoDiner.Menu
         /// <summary>
         /// Property to return the available ingredients.
         /// </summary>
-        public List<string> AvailableIngredients
+        public static List<string> AvailableIngredients
         {
             get
             {
                 List<string> results = new List<string>();
-                //Menu m = new Menu();
-                foreach (IMenuItem item in All)
+                foreach (IMenuItem item in AvailableMenuItems)
                 {
                     foreach (string ingredient in item.Ingredients)
                     {
@@ -316,21 +232,20 @@ namespace DinoDiner.Menu
         /// <param name="items"></param>
         /// <param name="ingredients"></param>
         /// <returns></returns>
-        public List<IMenuItem> FilterByIngredients(List<IMenuItem> items, List<string> ingredients)
+        public static List<IMenuItem> FilterByIngredients(List<IMenuItem> items, List<string> ingredients)
         {
             List<IMenuItem> results = new List<IMenuItem>();
+            results.AddRange(items);
             foreach (IMenuItem item in items)
             {
-                bool flag = true;
                 foreach(string s in ingredients)
                 {
-                    if (item.Ingredients.Contains(s))
+                    if (ingredients.Contains(s))
                     {
-                        flag = false;
-                        break;
+                        //flag = false;
+                        results.Remove(item);
                     }
                 }
-                if (flag) results.Add(item);
             }
             return results;
         }

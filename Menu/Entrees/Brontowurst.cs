@@ -50,6 +50,7 @@ namespace DinoDiner.Menu
         {
             this.Price = 5.36;
             this.Calories = 498;
+            Category = "Entree";
         }
 
         /// <summary>

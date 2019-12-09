@@ -1,7 +1,5 @@
 ﻿@page
 @model Website.Pages.MenuModel
-@using DinoDiner.Menu;
-@{DinoDiner.Menu.Menu menu = new DinoDiner.Menu.Menu();}
 @{
     ViewData["Title"] = "Menu";
 }
@@ -10,41 +8,69 @@
 
     <div class="content">
         <div>
-            <h2>Combos</h2>
-            @foreach (var item in Model.items)
+            <h2>Cretaceous Combos</h2>
+            @foreach (DinoDiner.Menu.IMenuItem item in Model.items)
             {
-                if (item is CretaceousCombo combo)
+                if(item.Category == "Combo")
                 {
                     <div class="menu-item">
-                        <p>@combo.ToString()</p>
-                        <p>@combo.Entree.ToString()</p>
-                        <p>@combo.Drink.ToString()</p>
-                        <p>@combo.Side.ToString()</p>
-                        <p>Price: $@item.Price</p>
-                        <p>Calories: @item.Calories</p>
+                        <h3>
+                            @item.ToString()
+                        </h3>
+                        <table style="width: 50px">
+                            <tr>
+                                <th>Size</th>
+                                <th>Price</th>
+                                <th>Calories</th>
+                            </tr>
+                            <tr>
+                                <th>Small</th>
+                                <th>@String.Format("{0:N2}", item.Price)</th>
+                                <th>@item.Calories</th>
+                            </tr>
+                            <tr>
+                                @if(item is DinoDiner.Menu.CretaceousCombo medium)
+                                {
+                                    medium.Size = DinoDiner.Menu.Size.Medium;
+                                }
+                                 <th>Medium</th>
+                                 <th>@String.Format("{0:N2}", item.Price)</th>
+                                 <th>@item.Calories</th>
+                            </tr>
+                            <tr>
+                                @if (item is DinoDiner.Menu.CretaceousCombo large)
+                                {
+                                    large.Size = DinoDiner.Menu.Size.Large;
+                                }
+                                <th>Large</th>
+                                <th>@String.Format("{0:N2}", item.Price)</th>
+                                <th>@item.Calories</th>
+                            </tr>
+                        </table>
+                       
                         <p>Ingredients: </p>
-                        <div>
-                            @foreach (var ingredients in item.Ingredients)
+                            @foreach (string ingredients in item.Ingredients)
                             {
-                                <p>@ingredients</p>
+                                <ul>@ingredients</ul>
                             }
-                        </div>
                     </div>
                 }
 
             }
 
             <h2>Entrees</h2>
-            @foreach (var item in Model.items)
+            @foreach (DinoDiner.Menu.IMenuItem item in Model.items)
             {
-                if (item is Entree e)
+                if (item.Category == "Entree")
                 {
                     <div class="menu-item">
-                        <p>@e.ToString()</p>
+                        <h3>
+                            @item.ToString()
+                        </h3>
                         <p>Price: $@item.Price</p>
                         <p>Calories: @item.Calories</p>
                         <p>Ingredients: </p>
-                        @foreach (var ingredients in item.Ingredients)
+                        @foreach (string ingredients in item.Ingredients)
                         {
                             <ul>@ingredients</ul>
                         }
@@ -53,38 +79,98 @@
 
             }
             <h2>Sides</h2>
-            @foreach (var item in Model.items)
+            @foreach (DinoDiner.Menu.IMenuItem item in Model.items)
             {
-                if (item is Side s)
+                if (item.Category == "Side")
                 {
-                    <div class="menu-item">
-                        <p>@s.ToString()</p>
-                        <p>Price: $@item.Price</p>
-                        <p>Calories: @item.Calories</p>
-                        <p>Ingredients: </p>
-                        @foreach (var ingredients in item.Ingredients)
-                        {
-                            <ul>@ingredients</ul>
-                        }
-                    </div>
+                <div class="menu-item">
+                    <h3>
+                        @item.ToString()
+                    </h3>
+                    <table style="width: 50px">
+                        <tr>
+                            <th>Size</th>
+                            <th>Price</th>
+                            <th>Calories</th>
+                        </tr>
+                        <tr>
+                            <th>Small</th>
+                            <th>@String.Format("{0:N2}", item.Price)</th>
+                            <th>@item.Calories</th>
+                        </tr>
+                        <tr>
+                            @if (item is DinoDiner.Menu.Side medium)
+                            {
+                                medium.Size = DinoDiner.Menu.Size.Medium;
+                            }
+                            <th>Medium</th>
+                            <th>@String.Format("{0:N2}", item.Price)</th>
+                            <th>@item.Calories</th>
+                        </tr>
+                        <tr>
+                            @if (item is DinoDiner.Menu.Side large)
+                            {
+                                large.Size = DinoDiner.Menu.Size.Large;
+                            }
+                            <th>Large</th>
+                            <th>@String.Format("{0:N2}", item.Price)</th>
+                            <th>@item.Calories</th>
+                        </tr>
+                    </table>
+                    <p>Ingredients: </p>
+                    @foreach (string ingredients in item.Ingredients)
+                    {
+                        <ul>@ingredients</ul>
+                    }
+                </div>
                 }
 
             }
             <h2>Drinks</h2>
-            @foreach (var item in Model.items)
+            @foreach (DinoDiner.Menu.IMenuItem item in Model.items)
             {
-                if (item is Drink d)
+                if (item.Category == "Drink")
                 {
-                    <div class="menu-item">
-                        <p>@d.ToString()</p>
-                        <p>Price: $@item.Price</p>
-                        <p>Calories: @item.Calories</p>
-                        <p>Ingredients: </p>
-                        @foreach (var ingredients in item.Ingredients)
+            <div class="menu-item">
+                <h3>
+                    @item.ToString()
+                </h3>
+                <table style="width: 50px">
+                    <tr>
+                        <th>Size</th>
+                        <th>Price</th>
+                        <th>Calories</th>
+                    </tr>
+                    <tr>
+                        <th>Small</th>
+                        <th>@String.Format("{0:N2}", item.Price)</th>
+                        <th>@item.Calories</th>
+                    </tr>
+                    <tr>
+                        @if (item is DinoDiner.Menu.Drink medium)
                         {
-                            <ul>@ingredients</ul>
+                            medium.Size = DinoDiner.Menu.Size.Medium;
                         }
-                    </div>
+                        <th>Medium</th>
+                        <th>@String.Format("{0:N2}", item.Price)</th>
+                        <th>@item.Calories</th>
+                    </tr>
+                    <tr>
+                        @if (item is DinoDiner.Menu.Drink large)
+                        {
+                            large.Size = DinoDiner.Menu.Size.Large;
+                        }
+                        <th>Large</th>
+                        <th>@String.Format("{0:N2}", item.Price)</th>
+                        <th>@item.Calories</th>
+                    </tr>
+                </table>
+                <p>Ingredients: </p>
+                @foreach (string ingredients in item.Ingredients)
+                {
+                    <ul>@ingredients</ul>
+                }
+            </div>
                 }
 
             }
@@ -128,10 +214,10 @@
                 </div>
                 <h4>Excluding Ingredients</h4>
                 <div class="exclude-ingredient">
-                    @foreach (string ingredient in Model.Menu.AvailableIngredients)
+                    @foreach (string ingredient in @Model.ingredients)
                     {
                     <label>
-                        <input type="checkbox" name="ingredients" value="@ingredient" checked="@Model.ingredients.Contains(ingredient)" />
+                        <input type="checkbox" name="excludeIngredients" value="@ingredient" checked="@Model.excludeIngredients.Contains(@ingredient)" />
                         @ingredient
                     </label>  
                     }

@@ -76,6 +76,7 @@ namespace DinoDiner.Menu
         {
             this.Price = 0.99;
             this.Calories = 420;
+            Category = "Side";
         }
 
         /// <summary>
@@ -95,7 +96,7 @@ namespace DinoDiner.Menu
         /// <returns></returns>
         public override string ToString()
         {
-            return size + " Meteor Mac and Cheese";
+            return " Meteor Mac and Cheese";
         }
     }
 }

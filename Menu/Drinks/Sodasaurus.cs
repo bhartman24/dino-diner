@@ -42,6 +42,7 @@ namespace DinoDiner.Menu
             Price = 1.50;
             this.Calories = 112;
             Ice = true;
+            Category = "Drink";
         }
 
         /// <summary>
@@ -117,7 +118,7 @@ namespace DinoDiner.Menu
         /// <returns></returns>
         public override string ToString()
         {
-            return $"{Size} {Flavor} Sodasaurus";
+            return $"{Flavor} Sodasaurus";
         }
     }
 }

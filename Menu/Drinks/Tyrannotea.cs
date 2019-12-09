@@ -45,6 +45,7 @@ namespace DinoDiner.Menu
             Sweet = false;
             Ice = true;
             Lemon = false;
+            Category = "Drink";
         }
 
         /// <summary>
@@ -166,7 +167,7 @@ namespace DinoDiner.Menu
             {
                 return size + " Sweet Tyrannotea";
             }
-            else return size + " Tyrannotea";
+            else return " Tyrannotea";
         }
     }
 }
